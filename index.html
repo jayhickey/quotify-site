@@ -263,6 +263,25 @@ footer{padding:80px 0 60px;text-align:center}
   .close h2{font-size:4.6rem}
   .close p{font-size:1.85rem}
 }
+
+.heroDots{display:none}
+/* Phone widths: the three-phone hero becomes a native swipe carousel (scroll-snap). JS below adds the per-phone transforms, dots and ARIA. */
+@media (max-width: 430px){
+  .heroArt{--slide:min(60vw,250px);height:auto;display:flex;align-items:flex-start;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;touch-action:pan-x pan-y;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:18px calc((100vw - var(--slide))/2) 24px;margin:28px -16px 0}
+  .heroArt::-webkit-scrollbar{display:none}
+  .heroArt::after{display:none}
+  .heroArt:focus-visible{outline:2px solid var(--accent2);outline-offset:-2px;border-radius:12px}
+  .heroArt .phone.p1,.heroArt .phone.p2,.heroArt .phone.p3{position:relative;flex:0 0 var(--slide);width:var(--slide);left:auto;top:auto;margin:0;transform:none;scroll-snap-align:center;scroll-snap-stop:always;will-change:transform}
+  .heroDots{display:flex;justify-content:center;gap:2px;margin-top:2px}
+  .heroDots button{width:24px;height:24px;border:0;background:none;padding:0;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:12px}
+  .heroDots button::before{content:"";width:7px;height:7px;border-radius:4px;background:var(--text3);opacity:.55;transition:width .2s,opacity .2s,background .2s}
+  .heroDots button[aria-current="true"]::before{width:18px;opacity:1;background:var(--text)}
+  .heroDots button:focus-visible{outline:2px solid var(--accent2);outline-offset:0}
+}
+@media (max-width: 430px) and (prefers-reduced-motion: reduce){
+  .heroArt{gap:12px}
+  .heroDots button::before{transition:none}
+}
 </style>
 </head>
 <body>
@@ -286,10 +305,65 @@ footer{padding:80px 0 60px;text-align:center}
     <span>For iPhone and iPad</span>
   </div>
   <div class="heroArt">
-    <div class="phone p2"><picture><source srcset="assets/2/screen-home-660w.webp 660w, assets/2/screen-home.webp 1320w" type="image/webp" sizes="(max-width:768px) 44vw, 270px"><img src="assets/2/screen-home.jpg" srcset="assets/2/screen-home-660w.jpg 660w, assets/2/screen-home.jpg 1320w" sizes="(max-width:768px) 44vw, 270px" width="1320" height="2868" alt="Quotify widgets on the Home Screen"></picture></div>
-    <div class="phone p1"><picture><source srcset="assets/2/screen-library-660w.webp 660w, assets/2/screen-library.webp 1320w" type="image/webp" sizes="(max-width:768px) 56vw, 320px"><img src="assets/2/screen-library.jpg" srcset="assets/2/screen-library-660w.jpg 660w, assets/2/screen-library.jpg 1320w" sizes="(max-width:768px) 56vw, 320px" width="1320" height="2868" alt="A Quotify library of saved quotes"></picture></div>
-    <div class="phone p3"><picture><source srcset="assets/2/screen-home-notif-660w.webp 660w, assets/2/screen-home-notif.webp 1320w" type="image/webp" sizes="(max-width:768px) 44vw, 270px"><img src="assets/2/screen-home-notif.jpg" srcset="assets/2/screen-home-notif-660w.jpg 660w, assets/2/screen-home-notif.jpg 1320w" sizes="(max-width:768px) 44vw, 270px" width="1320" height="2868" alt="A Daily Quote notification above Quotify widgets"></picture></div>
+    <div class="phone p2"><picture><source srcset="assets/2/screen-home-660w.webp 660w, assets/2/screen-home.webp 1320w" type="image/webp" sizes="(max-width:430px) 60vw, (max-width:768px) 44vw, 270px"><img src="assets/2/screen-home.jpg" srcset="assets/2/screen-home-660w.jpg 660w, assets/2/screen-home.jpg 1320w" sizes="(max-width:430px) 60vw, (max-width:768px) 44vw, 270px" width="1320" height="2868" alt="Quotify widgets on the Home Screen"></picture></div>
+    <div class="phone p1"><picture><source srcset="assets/2/screen-library-660w.webp 660w, assets/2/screen-library.webp 1320w" type="image/webp" sizes="(max-width:430px) 60vw, (max-width:768px) 56vw, 320px"><img src="assets/2/screen-library.jpg" srcset="assets/2/screen-library-660w.jpg 660w, assets/2/screen-library.jpg 1320w" sizes="(max-width:430px) 60vw, (max-width:768px) 56vw, 320px" width="1320" height="2868" alt="A Quotify library of saved quotes"></picture></div>
+    <div class="phone p3"><picture><source srcset="assets/2/screen-home-notif-660w.webp 660w, assets/2/screen-home-notif.webp 1320w" type="image/webp" sizes="(max-width:430px) 60vw, (max-width:768px) 44vw, 270px"><img src="assets/2/screen-home-notif.jpg" srcset="assets/2/screen-home-notif-660w.jpg 660w, assets/2/screen-home-notif.jpg 1320w" sizes="(max-width:430px) 60vw, (max-width:768px) 44vw, 270px" width="1320" height="2868" alt="A Daily Quote notification above Quotify widgets"></picture></div>
   </div>
+  <div class="heroDots" role="group" aria-label="Choose a screenshot">
+    <button type="button" aria-label="Screenshot 1 of 3: Home Screen widgets"></button>
+    <button type="button" aria-label="Screenshot 2 of 3: quote library" aria-current="true"></button>
+    <button type="button" aria-label="Screenshot 3 of 3: Daily Quote notification"></button>
+  </div>
+<script>
+(function(){
+  var art=document.querySelector('.heroArt'), dotWrap=document.querySelector('.heroDots');
+  if(!art||!dotWrap||!window.matchMedia) return;
+  var phones=[].slice.call(art.querySelectorAll('.phone')), dots=[].slice.call(dotWrap.querySelectorAll('button'));
+  var mq=matchMedia('(max-width: 430px)'), rm=matchMedia('(prefers-reduced-motion: reduce)');
+  var active=-1, ticking=false, live=false;
+  function target(i){var p=phones[i];return p.offsetLeft+p.offsetWidth/2-art.clientWidth/2;}
+  function update(){
+    ticking=false; if(!live) return;
+    var cx=art.scrollLeft+art.clientWidth/2, best=0, bestD=9;
+    phones.forEach(function(p,i){
+      var d=(p.offsetLeft+p.offsetWidth/2-cx)/p.offsetWidth, a=Math.min(Math.abs(d),1);
+      if(Math.abs(d)<bestD){bestD=Math.abs(d);best=i;}
+      // rotate/scale about the centre only, so the transformed box keeps its centre and snap points stay put
+      p.style.transform=rm.matches?'':'rotate('+(d*7).toFixed(2)+'deg) scale('+(1-0.14*a).toFixed(3)+')';
+      p.style.zIndex=String(10-Math.round(a*5));
+    });
+    if(best!==active){active=best;dots.forEach(function(b,i){if(i===best)b.setAttribute('aria-current','true');else b.removeAttribute('aria-current');});}
+  }
+  function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(update);}}
+  function enable(){
+    live=true;
+    art.setAttribute('role','region');art.setAttribute('aria-roledescription','carousel');
+    art.setAttribute('aria-label','Quotify screenshots, swipe or use the arrow keys');art.tabIndex=0;
+    phones.forEach(function(p,i){p.setAttribute('role','group');p.setAttribute('aria-roledescription','slide');
+      p.setAttribute('aria-label',(i+1)+' of '+phones.length);});
+    art.scrollLeft=target(1); active=-1; update();
+  }
+  function disable(){
+    live=false;
+    ['role','aria-roledescription','aria-label','tabindex'].forEach(function(a){art.removeAttribute(a);});
+    phones.forEach(function(p){['role','aria-roledescription','aria-label'].forEach(function(a){p.removeAttribute(a);});p.style.transform='';p.style.zIndex='';});
+  }
+  dots.forEach(function(b,i){b.addEventListener('click',function(){go(i);});});
+  art.addEventListener('scroll',onScroll,{passive:true});
+  function go(i){i=Math.max(0,Math.min(phones.length-1,i));art.scrollTo({left:target(i),behavior:rm.matches?'auto':'smooth'});}
+  art.addEventListener('keydown',function(e){
+    if(!live||e.target!==art||e.altKey||e.ctrlKey||e.metaKey) return;
+    var k=e.key, i=active<0?1:active;
+    if(k==='ArrowRight')go(i+1);else if(k==='ArrowLeft')go(i-1);else if(k==='Home')go(0);else if(k==='End')go(phones.length-1);else return;
+    e.preventDefault();
+  });
+  window.addEventListener('resize',onScroll);
+  function sync(){if(mq.matches)enable();else disable();}
+  (mq.addEventListener?mq.addEventListener('change',sync):mq.addListener(sync));
+  (rm.addEventListener?rm.addEventListener('change',onScroll):rm.addListener(onScroll));
+  sync();
+})();
+</script>
 </section>
 
 <section class="meet" id="new">

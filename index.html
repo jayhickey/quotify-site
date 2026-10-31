@@ -328,7 +328,8 @@ footer{padding:80px 0 60px;text-align:center}
     phones.forEach(function(p,i){
       var d=(p.offsetLeft+p.offsetWidth/2-cx)/p.offsetWidth, a=Math.min(Math.abs(d),1);
       if(Math.abs(d)<bestD){bestD=Math.abs(d);best=i;}
-      p.style.transform=rm.matches?'':'translateX('+(-d*9).toFixed(2)+'%) rotate('+(d*7).toFixed(2)+'deg) scale('+(1-0.14*a).toFixed(3)+')';
+      // rotate/scale about the centre only, so the transformed box keeps its centre and snap points stay put
+      p.style.transform=rm.matches?'':'rotate('+(d*7).toFixed(2)+'deg) scale('+(1-0.14*a).toFixed(3)+')';
       p.style.zIndex=String(10-Math.round(a*5));
     });
     if(best!==active){active=best;dots.forEach(function(b,i){if(i===best)b.setAttribute('aria-current','true');else b.removeAttribute('aria-current');});}
@@ -347,8 +348,15 @@ footer{padding:80px 0 60px;text-align:center}
     ['role','aria-roledescription','aria-label','tabindex'].forEach(function(a){art.removeAttribute(a);});
     phones.forEach(function(p){['role','aria-roledescription','aria-label'].forEach(function(a){p.removeAttribute(a);});p.style.transform='';p.style.zIndex='';});
   }
-  dots.forEach(function(b,i){b.addEventListener('click',function(){art.scrollTo({left:target(i),behavior:rm.matches?'auto':'smooth'});});});
+  dots.forEach(function(b,i){b.addEventListener('click',function(){go(i);});});
   art.addEventListener('scroll',onScroll,{passive:true});
+  function go(i){i=Math.max(0,Math.min(phones.length-1,i));art.scrollTo({left:target(i),behavior:rm.matches?'auto':'smooth'});}
+  art.addEventListener('keydown',function(e){
+    if(!live||e.target!==art||e.altKey||e.ctrlKey||e.metaKey) return;
+    var k=e.key, i=active<0?1:active;
+    if(k==='ArrowRight')go(i+1);else if(k==='ArrowLeft')go(i-1);else if(k==='Home')go(0);else if(k==='End')go(phones.length-1);else return;
+    e.preventDefault();
+  });
   window.addEventListener('resize',onScroll);
   function sync(){if(mq.matches)enable();else disable();}
   (mq.addEventListener?mq.addEventListener('change',sync):mq.addListener(sync));

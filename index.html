@@ -272,6 +272,8 @@ footer{padding:80px 0 60px;text-align:center}
   .heroArt::after{display:none}
   .heroArt:focus-visible{outline:2px solid var(--accent2);outline-offset:-2px;border-radius:12px}
   .heroArt .phone.p1,.heroArt .phone.p2,.heroArt .phone.p3{position:relative;flex:0 0 var(--slide);width:var(--slide);left:auto;top:auto;margin:0;transform:none;scroll-snap-align:center;scroll-snap-stop:always;will-change:transform}
+  /* Tuck the side phones a little behind the centre one (centre stays on top via z-index from the script). Only the 2nd/3rd phones get the pull, so the first and last can still snap dead centre. */
+  .heroArt .phone + .phone{margin-left:calc(var(--slide) * -0.16);margin-left:round(calc(var(--slide) * -0.16),1px)}
   .heroDots{display:flex;justify-content:center;gap:2px;margin-top:2px}
   .heroDots button{width:24px;height:24px;border:0;background:none;padding:0;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:12px}
   .heroDots button::before{content:"";width:7px;height:7px;border-radius:4px;background:var(--text3);opacity:.55;transition:width .2s,opacity .2s,background .2s}
@@ -280,6 +282,7 @@ footer{padding:80px 0 60px;text-align:center}
 }
 @media (max-width: 430px) and (prefers-reduced-motion: reduce){
   .heroArt{gap:12px}
+  .heroArt .phone + .phone{margin-left:0}
   .heroDots button::before{transition:none}
 }
 </style>
@@ -325,8 +328,10 @@ footer{padding:80px 0 60px;text-align:center}
   function update(){
     ticking=false; if(!live) return;
     var cx=art.scrollLeft+art.clientWidth/2, best=0, bestD=9;
+    // distance between neighbouring phone centres (less than a phone width now that they overlap), so a resting side phone still gets the full tilt/scale
+    var step=(phones.length>1&&phones[1].offsetLeft-phones[0].offsetLeft)||phones[0].offsetWidth;
     phones.forEach(function(p,i){
-      var d=(p.offsetLeft+p.offsetWidth/2-cx)/p.offsetWidth, a=Math.min(Math.abs(d),1);
+      var d=(p.offsetLeft+p.offsetWidth/2-cx)/step, a=Math.min(Math.abs(d),1);
       if(Math.abs(d)<bestD){bestD=Math.abs(d);best=i;}
       // rotate/scale about the centre only, so the transformed box keeps its centre and snap points stay put
       p.style.transform=rm.matches?'':'rotate('+(d*7).toFixed(2)+'deg) scale('+(1-0.14*a).toFixed(3)+')';

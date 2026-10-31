@@ -81,13 +81,11 @@ header nav a.get:hover{filter:brightness(1.08)}
 .heroArt .p1{width:320px;left:50%;top:0;margin-left:-160px;z-index:3}
 .heroArt .p2{width:270px;left:50%;top:90px;margin-left:-450px;transform:rotate(-7deg);z-index:2}
 .heroArt .p3{width:270px;left:50%;top:90px;margin-left:180px;transform:rotate(7deg);z-index:2}
-/* Thin bezel: padding on the picture resolves against the phone's own width (padding on .phone resolved against .heroArt, ~36px). Outer radius = screen radius + bezel. */
-.heroArt .phone{padding:0;border-radius:14.45%/6.84%}
-.heroArt .phone picture{padding:2.6%}
-.heroArt .phone img{aspect-ratio:1320/2868;border-radius:12.5%/5.75%}
 
-.phone{background:var(--bezel);padding:3.2%;border-radius:15%/7%;box-shadow:0 0 0 1px var(--bezelRing),var(--shadow)}
-.phone img{width:100%;border-radius:12.5%/5.8%}
+/* Thin bezel: padding on the picture resolves against the phone's own width (percentage padding on .phone resolved against its container, 11-36px). Outer radius = screen radius + bezel. Phone height = 2.112 x width. */
+.phone{background:var(--bezel);padding:0;border-radius:14.45%/6.84%;box-shadow:0 0 0 1px var(--bezelRing),var(--shadow)}
+.phone picture{padding:2.6%}
+.phone img{width:100%;aspect-ratio:1320/2868;border-radius:12.5%/5.75%}
 
 .meet{margin-top:10px;background:var(--newBg);border:1px solid var(--line);border-radius:36px;padding:56px 56px 50px;text-align:center}
 .eyebrow{display:block;color:var(--accent2);font-size:1.4rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
@@ -110,7 +108,7 @@ header nav a.get:hover{filter:brightness(1.08)}
 .chapter.flip .panel{order:2}
 .panel{position:relative;border-radius:36px;overflow:hidden}
 .panel.tall{height:620px}
-.panel.tall .phone{position:absolute;left:50%;transform:translateX(-50%)}
+.panel.tall .phone{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
 .chapter h3{font-size:5.2rem;line-height:1.05;font-weight:900;letter-spacing:-.01em}
 .chapter .body{color:var(--text2);font-size:2.1rem;line-height:1.55;margin-top:20px;max-width:460px}
 .g-brown{background:linear-gradient(160deg,#5a4532,#2c2118)}
@@ -119,10 +117,8 @@ header nav a.get:hover{filter:brightness(1.08)}
 .g-green{background:linear-gradient(160deg,#2E7A43,#164426)}
 .g-purple{background:linear-gradient(160deg,#6B3BA6,#3A1F63)}
 .g-teal{background:linear-gradient(160deg,#1B6F7A,#0B3940)}
-.homeCrop{width:380px;max-width:92%;top:60px;border-radius:60px 60px 0 0;padding-bottom:0}
-.homeCrop img{border-radius:48px 48px 0 0}
-.phRot{width:270px;top:40px}
-.phCard{width:250px;max-width:82%;top:40px}
+.homeCrop,.phRot{width:260px}
+.phCard{width:220px}
 
 .photoFlow{padding:44px 44px 40px;display:flex;flex-direction:column;align-items:center}
 .photoFlow .shot{position:relative;width:100%;max-width:520px}
@@ -139,8 +135,8 @@ header nav a.get:hover{filter:brightness(1.08)}
 .chips span{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.16);color:#fff;font-size:1.5rem;font-weight:600}
 
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:130px}
-.fcard .panel{height:460px;border-radius:30px}
-.fcard .panel .phone{position:absolute;left:50%;transform:translateX(-50%)}
+.fcard .panel{height:520px;border-radius:30px}
+.fcard .panel .phone{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
 .fcard h3{font-size:3rem;line-height:1.15;font-weight:900;margin-top:24px}
 .fcard p{color:var(--text2);font-size:1.8rem;margin-top:8px}
 .shareArt{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:28px}
@@ -233,11 +229,10 @@ footer{padding:80px 0 60px;text-align:center}
   .chapter,.chapter.flip{grid-template-columns:1fr;gap:26px;text-align:center}
   .chapter.flip .panel{order:0}
   .panel{border-radius:28px}
-  .panel.tall{height:460px}
+  .panel.tall{height:540px}
   .chapter h3{font-size:3.6rem}
   .chapter .body{font-size:1.8rem;margin:14px auto 0}
-  .homeCrop{width:290px;top:40px;border-radius:46px 46px 0 0}
-  .homeCrop img{border-radius:37px 37px 0 0}
+  .homeCrop,.phRot{width:230px}
   .photoFlow{padding:30px 18px 24px}
   .photoFlow .shot .tag{font-size:1.25rem;padding:6px 12px;left:10px;top:-10px}
   .photoFlow .arrow{font-size:2.4rem;margin:16px 0 12px}
@@ -249,7 +244,7 @@ footer{padding:80px 0 60px;text-align:center}
   .chips{gap:6px;margin-top:16px}
   .chips span{font-size:1.3rem;padding:7px 11px;gap:6px}
   .cards{grid-template-columns:1fr;gap:56px;margin-top:80px;text-align:center}
-  .fcard .panel{height:420px}
+  .fcard .panel{height:520px}
   .fcard h3{font-size:3rem}
   .wall,.more{padding-top:96px}
   .wall h2,.more h2{font-size:3.6rem}
@@ -338,7 +333,7 @@ footer{padding:80px 0 60px;text-align:center}
 
   <div class="chapter flip">
     <div class="panel tall g-taupe">
-      <div class="phone homeCrop"><picture><source srcset="assets/2/screen-home-top-660w.webp 660w, assets/2/screen-home-top.webp 1320w" type="image/webp" sizes="(max-width:768px) 74vw, 380px"><img src="assets/2/screen-home-top.jpg" srcset="assets/2/screen-home-top-660w.jpg 660w, assets/2/screen-home-top.jpg 1320w" sizes="(max-width:768px) 74vw, 380px" width="1320" height="2190" alt="A Daily Quote notification above Quotify widgets" loading="lazy" decoding="async"></picture></div>
+      <div class="phone homeCrop"><picture><source srcset="assets/2/screen-home-notif-660w.webp 660w, assets/2/screen-home-notif.webp 1320w" type="image/webp" sizes="(max-width:768px) 230px, 260px"><img src="assets/2/screen-home-notif.jpg" srcset="assets/2/screen-home-notif-660w.jpg 660w, assets/2/screen-home-notif.jpg 1320w" sizes="(max-width:768px) 230px, 260px" width="1320" height="2868" alt="A Daily Quote notification above Quotify widgets" loading="lazy" decoding="async"></picture></div>
     </div>
     <div class="text">
       <h3 class="serif">A quote a day, right where you look.</h3>
@@ -348,7 +343,7 @@ footer{padding:80px 0 60px;text-align:center}
 
   <div class="chapter" id="favorites">
     <div class="panel tall g-teal">
-      <div class="phone phRot"><picture><source srcset="assets/2/screen-rotation-660w.webp 660w, assets/2/screen-rotation.webp 1320w" type="image/webp" sizes="(max-width:768px) 70vw, 270px"><img src="assets/2/screen-rotation.jpg" srcset="assets/2/screen-rotation-660w.jpg 660w, assets/2/screen-rotation.jpg 1320w" sizes="(max-width:768px) 70vw, 270px" width="1320" height="2868" alt="Choosing Favorites as the quotes to show, with a live widget preview" loading="lazy" decoding="async"></picture></div>
+      <div class="phone phRot"><picture><source srcset="assets/2/screen-rotation-660w.webp 660w, assets/2/screen-rotation.webp 1320w" type="image/webp" sizes="(max-width:768px) 230px, 260px"><img src="assets/2/screen-rotation.jpg" srcset="assets/2/screen-rotation-660w.jpg 660w, assets/2/screen-rotation.jpg 1320w" sizes="(max-width:768px) 230px, 260px" width="1320" height="2868" alt="Choosing Favorites as the quotes to show, with a live widget preview" loading="lazy" decoding="async"></picture></div>
     </div>
     <div class="text">
       <h3 class="serif">Your favorites, on repeat.</h3>
@@ -359,7 +354,7 @@ footer{padding:80px 0 60px;text-align:center}
 
 <div class="cards">
   <div class="fcard">
-    <div class="panel g-green"><div class="phone phCard"><picture><source srcset="assets/2/screen-new-quote-660w.webp 660w, assets/2/screen-new-quote.webp 1320w" type="image/webp" sizes="(max-width:768px) 64vw, 250px"><img src="assets/2/screen-new-quote.jpg" srcset="assets/2/screen-new-quote-660w.jpg 660w, assets/2/screen-new-quote.jpg 1320w" sizes="(max-width:768px) 64vw, 250px" width="1320" height="2868" alt="The New Quote sheet: photo, paste, audio recording or write it yourself" loading="lazy" decoding="async"></picture></div></div>
+    <div class="panel g-green"><div class="phone phCard"><picture><source srcset="assets/2/screen-new-quote-660w.webp 660w, assets/2/screen-new-quote.webp 1320w" type="image/webp" sizes="220px"><img src="assets/2/screen-new-quote.jpg" srcset="assets/2/screen-new-quote-660w.jpg 660w, assets/2/screen-new-quote.jpg 1320w" sizes="220px" width="1320" height="2868" alt="The New Quote sheet: photo, paste, audio recording or write it yourself" loading="lazy" decoding="async"></picture></div></div>
     <h3 class="serif">Save it the moment you hear it.</h3>
     <p>Record, paste or add from a photo. Or share straight from Safari and Instagram.</p>
   </div>
@@ -372,7 +367,7 @@ footer{padding:80px 0 60px;text-align:center}
     <p>Story, Square and Wide images, with one tap to Instagram Stories.</p>
   </div>
   <div class="fcard">
-    <div class="panel g-purple"><div class="phone phCard"><picture><source srcset="assets/2/screen-search-660w.webp 660w, assets/2/screen-search.webp 1320w" type="image/webp" sizes="(max-width:768px) 64vw, 250px"><img src="assets/2/screen-search.jpg" srcset="assets/2/screen-search-660w.jpg 660w, assets/2/screen-search.jpg 1320w" sizes="(max-width:768px) 64vw, 250px" width="1320" height="2868" alt="Searching the library for life" loading="lazy" decoding="async"></picture></div></div>
+    <div class="panel g-purple"><div class="phone phCard"><picture><source srcset="assets/2/screen-search-660w.webp 660w, assets/2/screen-search.webp 1320w" type="image/webp" sizes="220px"><img src="assets/2/screen-search.jpg" srcset="assets/2/screen-search-660w.jpg 660w, assets/2/screen-search.jpg 1320w" sizes="220px" width="1320" height="2868" alt="Searching the library for life" loading="lazy" decoding="async"></picture></div></div>
     <h3 class="serif">Find any quote in seconds.</h3>
     <p>Search, filter and sort by author, book or any field you add.</p>
   </div>

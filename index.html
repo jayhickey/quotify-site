@@ -75,13 +75,16 @@ header nav a.get:hover{filter:brightness(1.08)}
 .hero .lede{color:var(--text2);font-size:2.3rem;line-height:1.5;margin:24px auto 0;max-width:640px}
 .hero .cta{margin-top:34px;display:flex;flex-direction:column;align-items:center;gap:12px}
 .hero .cta span{color:var(--text3);font-size:1.5rem}
-.heroArt{position:relative;height:640px;margin-top:60px;overflow:hidden}
-.heroArt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:200px;background:linear-gradient(transparent,var(--bg));z-index:5;pointer-events:none}
+.heroArt{position:relative;height:720px;margin-top:60px;overflow:hidden}
+.heroArt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:40px;background:linear-gradient(transparent,var(--bg));z-index:5;pointer-events:none}
 .heroArt .phone{position:absolute}
 .heroArt .p1{width:320px;left:50%;top:0;margin-left:-160px;z-index:3}
 .heroArt .p2{width:270px;left:50%;top:90px;margin-left:-450px;transform:rotate(-7deg);z-index:2}
 .heroArt .p3{width:270px;left:50%;top:90px;margin-left:180px;transform:rotate(7deg);z-index:2}
-.heroArt .p3 img{aspect-ratio:1320/2868;object-fit:cover;object-position:top}
+/* Thin bezel: padding on the picture resolves against the phone's own width (padding on .phone resolved against .heroArt, ~36px). Outer radius = screen radius + bezel. */
+.heroArt .phone{padding:0;border-radius:14.45%/6.84%}
+.heroArt .phone picture{padding:2.6%}
+.heroArt .phone img{aspect-ratio:1320/2868;border-radius:12.5%/5.75%}
 
 .phone{background:var(--bezel);padding:3.2%;border-radius:15%/7%;box-shadow:0 0 0 1px var(--bezelRing),var(--shadow)}
 .phone img{width:100%;border-radius:12.5%/5.8%}
@@ -181,11 +184,11 @@ footer{padding:80px 0 60px;text-align:center}
 
 @media (max-width: 1000px){
   .hero h1{font-size:6.6rem}
-  .heroArt{height:560px}
+  .heroArt{height:600px}
   .heroArt .p1{width:270px;margin-left:-135px}
   .heroArt .p2,.heroArt .p3{width:220px;top:70px}
-  .heroArt .p2{margin-left:-360px}
-  .heroArt .p3{margin-left:140px}
+  .heroArt .p2{margin-left:-345px}
+  .heroArt .p3{margin-left:125px}
   .chapter h3{font-size:4.2rem}
   .meet h2,.wall h2,.more h2{font-size:4.4rem}
   .manifesto p.big{font-size:4rem}
@@ -206,16 +209,16 @@ footer{padding:80px 0 60px;text-align:center}
   .hero .lede{font-size:1.85rem;margin-top:16px}
   .hero .cta{margin-top:26px}
   .badge img{height:50px}
-  .heroArt{height:470px;margin:40px -16px 0}
-  .heroArt::after{height:140px}
+  .heroArt{height:calc(min(56vw,270px)*2.112 + 36px);margin:40px -16px 0}
+  .heroArt::after{height:30px}
   .heroArt .p1{width:56%;margin-left:-28%}
   .heroArt .p2,.heroArt .p3{width:44%;top:60px}
   .heroArt .p2{margin-left:-63%}
   .heroArt .p3{margin-left:19%}
   .heroArt .p1{width:min(56%,270px);margin-left:max(-28%,-135px)}
   .heroArt .p2,.heroArt .p3{width:min(44%,220px)}
-  .heroArt .p2{margin-left:max(-63%,-360px)}
-  .heroArt .p3{margin-left:min(19%,140px)}
+  .heroArt .p2{margin-left:max(-63%,-345px)}
+  .heroArt .p3{margin-left:min(19%,125px)}
   .meet{border-radius:28px;padding:36px 18px 22px}
   .meet h2{font-size:3.6rem}
   .meet p{font-size:1.8rem}
@@ -290,7 +293,7 @@ footer{padding:80px 0 60px;text-align:center}
   <div class="heroArt">
     <div class="phone p2"><picture><source srcset="assets/2/screen-home-660w.webp 660w, assets/2/screen-home.webp 1320w" type="image/webp" sizes="(max-width:768px) 44vw, 270px"><img src="assets/2/screen-home.jpg" srcset="assets/2/screen-home-660w.jpg 660w, assets/2/screen-home.jpg 1320w" sizes="(max-width:768px) 44vw, 270px" width="1320" height="2868" alt="Quotify widgets on the Home Screen"></picture></div>
     <div class="phone p1"><picture><source srcset="assets/2/screen-library-660w.webp 660w, assets/2/screen-library.webp 1320w" type="image/webp" sizes="(max-width:768px) 56vw, 320px"><img src="assets/2/screen-library.jpg" srcset="assets/2/screen-library-660w.jpg 660w, assets/2/screen-library.jpg 1320w" sizes="(max-width:768px) 56vw, 320px" width="1320" height="2868" alt="A Quotify library of saved quotes"></picture></div>
-    <div class="phone p3"><picture><source srcset="assets/2/screen-home-top-660w.webp 660w, assets/2/screen-home-top.webp 1320w" type="image/webp" sizes="(max-width:768px) 44vw, 270px"><img src="assets/2/screen-home-top.jpg" srcset="assets/2/screen-home-top-660w.jpg 660w, assets/2/screen-home-top.jpg 1320w" sizes="(max-width:768px) 44vw, 270px" width="1320" height="2190" alt="A Daily Quote notification above Quotify widgets"></picture></div>
+    <div class="phone p3"><picture><source srcset="assets/2/screen-home-notif-660w.webp 660w, assets/2/screen-home-notif.webp 1320w" type="image/webp" sizes="(max-width:768px) 44vw, 270px"><img src="assets/2/screen-home-notif.jpg" srcset="assets/2/screen-home-notif-660w.jpg 660w, assets/2/screen-home-notif.jpg 1320w" sizes="(max-width:768px) 44vw, 270px" width="1320" height="2868" alt="A Daily Quote notification above Quotify widgets"></picture></div>
   </div>
 </section>
 

@@ -172,7 +172,7 @@ header nav a.get:hover{filter:brightness(1.08)}
 .mcpBand a.mcpLink{flex:0 0 auto;display:inline-flex;align-items:center;padding:10px 18px;border-radius:999px;background:var(--pill);border:1px solid var(--line);color:var(--text);font-size:1.5rem;font-weight:600;white-space:nowrap}
 .mcpBand a.mcpLink:hover{border-color:var(--accent2)}
 .mcpBand a.mcpLink:focus-visible{outline:2px solid var(--accent2);outline-offset:2px}
-.mcpBand + .meet{margin-top:48px}
+.meet + .mcpBand{margin-top:48px}
 
 .close{margin:150px 0 0;padding:80px 30px 70px;text-align:center;border-radius:40px;background:var(--newBg);border:1px solid var(--line)}
 .close .icon{width:120px;height:120px;border-radius:28px;margin:0 auto}
@@ -273,7 +273,7 @@ footer{padding:32px 0 32px;text-align:center}
   .mcpBand h2{font-size:2.1rem}
   .mcpBand p{font-size:1.5rem}
   .mcpBand a.mcpLink{margin-left:58px}
-  .mcpBand + .meet{margin-top:32px}
+  .meet + .mcpBand{margin-top:32px}
   .close{margin-top:96px;padding:54px 18px 46px;border-radius:30px}
   .close .icon{width:92px;height:92px;border-radius:21px}
   .close h2{font-size:4.6rem}
@@ -391,16 +391,6 @@ footer{padding:32px 0 32px;text-align:center}
 </script>
 </section>
 
-<section id="ai-apps" class="mcpBand" aria-labelledby="mcpBandTitle">
-  <div class="mcpIcon" aria-hidden="true"><i class="fas fa-comments"></i></div>
-  <div class="mcpText">
-    <span class="eyebrow">Connect your AI</span>
-    <h2 id="mcpBandTitle" class="serif">Your quotes, in your AI chats.</h2>
-    <p>Find saved quotes or, with your permission, save new ones. Works with Claude, Claude Code, Codex, ChatGPT, Cursor, Grok Bot and Muse.</p>
-  </div>
-  <a class="mcpLink" href="https://mcp.quotify.to/">Connect your AI →</a>
-</section>
-
 <section class="meet" id="new">
   <span class="eyebrow">New</span>
   <h2 class="serif">Meet Quotify 2</h2>
@@ -410,6 +400,16 @@ footer{padding:32px 0 32px;text-align:center}
     <a href="#design"><i class="fas fa-wand-magic-sparkles"></i><span><b>A fresh new design</b><small>Cleaner quote rows and Liquid Glass controls.</small></span></a>
     <a href="#favorites"><i class="fas fa-star"></i><span><b>Choose which quotes show</b><small>Just your Favorites, or any field you've added.</small></span></a>
   </div>
+</section>
+
+<section id="ai-apps" class="mcpBand" aria-labelledby="mcpBandTitle">
+  <div class="mcpIcon" aria-hidden="true"><i class="fas fa-comments"></i></div>
+  <div class="mcpText">
+    <span class="eyebrow">Connect your AI</span>
+    <h2 id="mcpBandTitle" class="serif">Your quotes, in your AI chats.</h2>
+    <p>Find saved quotes or, with your permission, save new ones. Works with Claude, Claude Code, Codex, ChatGPT, Cursor, Grok Bot and Muse.</p>
+  </div>
+  <a class="mcpLink" href="https://mcp.quotify.to/">Connect your AI →</a>
 </section>
 
 <section class="manifesto" id="design">

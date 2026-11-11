@@ -211,20 +211,24 @@ html.js .manifesto .w.on{opacity:1}
 .wq:hover{transform:translateY(-3px) rotate(-.3deg)}
 .wq p{font-size:2.6rem;line-height:1.28;letter-spacing:-.01em;position:relative}
 .wq p::before{content:"\201C";color:var(--ember);font-weight:700;margin-right:4px}
-.wq span{display:block;margin-top:22px;font-size:1.2rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text2)}
-.wq span em{display:block;font-family:ui-serif,"New York","Iowan Old Style",Charter,Georgia,serif;font-style:italic;font-weight:400;letter-spacing:0;text-transform:none;font-size:1.6rem;color:var(--text3);margin-top:3px}
+.wq .meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin-top:22px;font-size:1.15rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--text)}
+.wq .meta>i{font-size:1.25rem;width:16px;text-align:center}
+.wq .meta em{font-family:ui-serif,"New York","Iowan Old Style",Charter,Georgia,serif;font-style:italic;font-weight:400;letter-spacing:0;text-transform:none;font-size:1.55rem;color:var(--text3)}
+.wq .meta em::before,.wq .meta .src::before{content:"·";font-style:normal;margin-right:8px;color:var(--text3)}
+.wq .meta .src{color:var(--accentText);white-space:nowrap}
+.wq .meta .src i{font-size:.9em;margin-left:2px}
+.s-book{color:#e07a2b}.s-tv{color:#30b35a}.s-web{color:#0a84ff}.s-x{color:var(--text)}
+.wq.paper .meta{color:var(--paperInk)}
+.wq.paper .meta em,.wq.paper .meta em::before{color:var(--paperMute)}
+.wq.ember .meta,.wq.blue .meta,.wq.ember .meta .src,.wq.blue .meta .src,.wq.ember .meta>i,.wq.blue .meta>i{color:#fff}
+.wq.ember .meta em,.wq.blue .meta em,.wq.ember .meta em::before,.wq.blue .meta em::before,.wq.ember .meta .src::before,.wq.blue .meta .src::before{color:rgba(255,255,255,.75)}
 .wq.t2 p{font-size:3.2rem;line-height:1.2}
 .wq.paper{background:var(--paper);color:var(--paperInk);border-color:transparent}
-.wq.paper span{color:var(--paperInk)}
-.wq.paper span em{color:var(--paperMute)}
 .wq.paper p::before{color:#d0702a}
 .wq.ember{background:linear-gradient(165deg,#e8843a,#a84a12);color:#fff;border-color:transparent}
 .wq.ember p::before{color:#ffe2c8}
-.wq.ember span{color:#fff}
-.wq.ember span em{color:rgba(255,255,255,.75)}
 .wq.blue{background:linear-gradient(165deg,#2d6fd6,#123a7a);color:#fff;border-color:transparent}
 .wq.blue p::before{color:#bcd6ff}
-.wq.blue span{color:#fff}
 
 /* More */
 .more{padding:160px 0 0}
@@ -347,8 +351,11 @@ footer .brand img{width:26px;height:26px;border-radius:22.5%}
   .wallGrid{columns:2;column-gap:10px;margin-top:36px}
   .wq{margin-bottom:10px;padding:20px 16px 16px;border-radius:20px}
   .wq p,.wq.t2 p{font-size:1.85rem;line-height:1.25}
-  .wq span{font-size:1rem;margin-top:14px}
-  .wq span em{font-size:1.35rem}
+  .wq .meta{font-size:1rem;margin-top:14px;gap:3px 6px}
+  .wq .meta em{font-size:1.35rem}
+  .wq .meta em,.wq .meta .src{flex-basis:100%;padding-left:22px}
+  .wq .meta em::before,.wq .meta .src::before{content:none}
+  .wq .meta .src{font-size:.95rem}
   .wq.hideM{display:none}
   .moreGrid{gap:8px;margin-top:32px}
   .moreGrid li{flex-basis:calc((100% - 8px)/2);gap:10px;padding:12px;border-radius:16px;font-size:1.4rem}
@@ -589,12 +596,12 @@ footer .brand img{width:26px;height:26px;border-radius:22.5%}
     <p>Books, talks, shows and friends, all in one library.</p>
   </div>
   <div class="wallGrid">
-    <div class="wq t2 paper rv"><p class="serif">You may not control all the events that happen to you, but you can decide not to be reduced by them.</p><span>Maya Angelou<em>Letter to My Daughter</em></span></div>
-    <div class="wq rv"><p class="serif">Be curious, not judgmental.</p><span>Ted Lasso</span></div>
-    <div class="wq t2 ember rv"><p class="serif">How we spend our days is, of course, how we spend our lives.</p><span>Annie Dillard<em>The Writing Life</em></span></div>
-    <div class="wq rv"><p class="serif">We suffer more often in imagination than in reality.</p><span>Seneca</span></div>
-    <div class="wq blue hideM rv"><p class="serif">Live in the future, then build what's missing.</p><span>Paul Graham</span></div>
-    <div class="wq paper hideM rv"><p class="serif">Our life is frittered away by detail.</p><span>Henry David Thoreau<em>Walden</em></span></div>
+    <div class="wq t2 paper rv"><p class="serif">You may not control all the events that happen to you, but you can decide not to be reduced by them.</p><div class="meta"><i class="fas fa-book-open s-book" aria-hidden="true"></i><b>Maya Angelou</b><em>Letter to My Daughter</em></div></div>
+    <div class="wq rv"><p class="serif">Be curious, not judgmental.</p><div class="meta"><i class="fas fa-tv s-tv" aria-hidden="true"></i><b>Ted Lasso</b><em>Season 1</em></div></div>
+    <div class="wq t2 ember hideM rv"><p class="serif">How we spend our days is, of course, how we spend our lives.</p><div class="meta"><i class="fas fa-book-open s-book" aria-hidden="true"></i><b>Annie Dillard</b><em>The Writing Life, p. 32</em></div></div>
+    <div class="wq rv"><p class="serif">Wealth is assets that earn while you sleep.</p><div class="meta"><i class="fab fa-x-twitter s-x" aria-hidden="true"></i><b>Naval</b><span class="src">x.com/naval <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></span></div></div>
+    <div class="wq blue rv"><p class="serif">Live in the future, then build what's missing.</p><div class="meta"><i class="fas fa-globe s-web" aria-hidden="true"></i><b>Paul Graham</b><span class="src">paulgraham.com <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></span></div></div>
+    <div class="wq paper hideM rv"><p class="serif">Our life is frittered away by detail.</p><div class="meta"><i class="fas fa-book-open s-book" aria-hidden="true"></i><b>Henry David Thoreau</b><em>Walden, p. 99</em></div></div>
   </div>
 </section>
 

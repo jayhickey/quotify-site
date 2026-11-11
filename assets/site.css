@@ -93,7 +93,8 @@ a:hover{text-decoration:underline;text-underline-offset:3px}
 .pressAssets img{width:100%}
 .pressAssets figcaption{margin-top:10px}
 .pressAssets .iconLink{border:0;background:none;border-radius:22.5%;box-shadow:0 12px 30px -10px rgba(10,132,255,.45),0 0 0 .5px var(--line2)}
-.pressShotsIpad{grid-template-columns:repeat(3,1fr)}
+.pressShotsPhone{grid-template-columns:repeat(7,1fr)}
+.pressShotsIpad{grid-template-columns:repeat(4,1fr)}
 
 /* Footer */
 footer{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:48px 0 56px;margin-top:96px;border-top:1px solid var(--line)}
@@ -109,6 +110,7 @@ footer .brand img{width:26px;height:26px;border-radius:6px}
 @media (max-width: 1000px){
   .pressAssets{grid-template-columns:repeat(3,1fr)}
   .pressAssets.pressUi{grid-template-columns:repeat(3,1fr)}
+  .pressShotsPhone,.pressShotsIpad{grid-template-columns:repeat(4,1fr)}
 }
 @media (max-width: 768px){
   html{scroll-padding-top:64px}

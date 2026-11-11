@@ -28,267 +28,353 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous">
 <style>
 :root{
-  --bg:#000; --text:#fff; --text2:#a1a1a6; --text3:#6e6e73; --card:#1c1c1e; --card2:#2c2c2e;
-  --line:rgba(255,255,255,.12); --chip:#363636; --accent:#007aff; --accent2:#0a84ff;
-  --bezel:#111; --bezelRing:rgba(255,255,255,.16); --shadow:0 30px 80px rgba(0,0,0,.6);
-  --badgeShadow:drop-shadow(0 0 5px gray);
-  --quote:#E8873A; --qcard:#16161a;
-  --newBg:linear-gradient(135deg,#0d2a55 0%,#0b1d36 55%,#0f2f33 100%);
-  --pill:#1f1f22;
+  --bg:#0c0b0a; --bg2:#13110f; --text:#f6f2eb; --text2:#b4aea4; --text3:#7f786e;
+  --card:#181614; --card2:#221f1c; --line:rgba(255,240,220,.09); --line2:rgba(255,240,220,.16);
+  --accent:#0a84ff; --accentText:#4aa3ff; --ember:#f08c3e; --emberSoft:rgba(240,140,62,.16);
+  --paper:#f4ecdd; --paperInk:#2a241c; --paperMute:#8a7f6e;
+  --bezel:#121110; --bezelRing:rgba(255,255,255,.14); --shadow:0 40px 90px -20px rgba(0,0,0,.75);
+  --glowA:rgba(240,140,62,.22); --glowB:rgba(10,132,255,.20);
+  --navBg:rgba(12,11,10,.72);
+  --newBg:radial-gradient(120% 140% at 0% 0%,#18304f 0%,#0f1a2a 45%,#121110 100%);
 }
 @media (prefers-color-scheme: light){
   :root{
-    --bg:#fff; --text:#1d1d1f; --text2:#515154; --text3:#86868b; --card:#f5f5f7; --card2:#e8e8ed;
-    --line:rgba(0,0,0,.1); --chip:#e8e8ed; --accent:#007aff; --accent2:#0071e3;
-    --bezel:#1d1d1f; --bezelRing:rgba(0,0,0,.08); --shadow:0 30px 70px rgba(0,0,0,.22);
-    --badgeShadow:none;
-    --quote:#D2691E; --qcard:#fbf7ef;
-    --newBg:linear-gradient(135deg,#e6f0ff 0%,#eef4ff 55%,#e5f5f3 100%);
-    --pill:#f2f2f5;
+    --bg:#faf7f1; --bg2:#f3eee5; --text:#1c1814; --text2:#5a534a; --text3:#8d857a;
+    --card:#fffdf9; --card2:#f1ebe0; --line:rgba(60,40,15,.11); --line2:rgba(60,40,15,.2);
+    --accent:#0071e3; --accentText:#0066cc; --ember:#c9621a; --emberSoft:rgba(201,98,26,.12);
+    --bezel:#1c1814; --bezelRing:rgba(0,0,0,.06); --shadow:0 40px 80px -24px rgba(60,35,10,.38);
+    --glowA:rgba(240,140,62,.20); --glowB:rgba(10,132,255,.12);
+    --navBg:rgba(250,247,241,.78);
+    --newBg:radial-gradient(120% 140% at 0% 0%,#dfeaff 0%,#eef2fb 45%,#fbf8f2 100%);
   }
 }
-html{font-size:62.5%}
+html{font-size:62.5%;scroll-behavior:smooth;scroll-padding-top:84px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html,body{overflow-x:hidden}
+html,body{overflow-x:clip}
 img{max-width:100%;height:auto;display:block}
 picture{display:block}
-body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:2rem;line-height:1.5;-webkit-font-smoothing:antialiased}
-a{color:var(--accent);text-decoration:none}
-.serif{font-family:ui-serif,"Iowan Old Style",Charter,Georgia,serif}
-.wrap{max-width:1170px;margin:0 auto;padding:0 20px}
-.badge img{height:56px;width:auto;object-fit:contain}
-.badge{display:inline-block}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:2rem;line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+a{color:var(--accentText);text-decoration:none}
+::selection{background:var(--ember);color:#fff}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.serif{font-family:ui-serif,"New York","Iowan Old Style","Apple Garamond",Charter,Georgia,serif}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+.badge{display:inline-block;transition:transform .2s ease}
+.badge:hover{transform:translateY(-1px)}
+.badge img{height:54px;width:auto}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--ember);font-size:1.3rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.eyebrow .num{font-variant-numeric:tabular-nums;color:var(--text3)}
+.eyebrow .num::after{content:"";display:inline-block;width:22px;height:1px;background:currentColor;vertical-align:middle;margin-left:10px;opacity:.6}
+.display{font-weight:500;letter-spacing:-.025em;line-height:1.02;text-wrap:balance}
+.display em{font-style:italic;color:var(--ember)}
+.sectionHead{text-align:center;max-width:780px;margin:0 auto}
+.sectionHead h2{font-size:6rem;margin-top:14px}
+.sectionHead p{color:var(--text2);font-size:2.1rem;margin-top:16px;text-wrap:pretty}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;font-size:1.6rem;font-weight:600;line-height:1.2;white-space:nowrap;transition:background .2s,border-color .2s,transform .2s}
+.btn i{font-size:1.3rem;transition:transform .2s}
+.btn:hover i{transform:translateX(3px)}
+.btn.ghost{color:var(--text);background:transparent;border:1px solid var(--line2)}
+.btn.ghost:hover{border-color:var(--text3);background:var(--card)}
 
-header{display:flex;align-items:center;justify-content:space-between;height:96px;gap:16px}
-header .brand{display:flex;align-items:center;gap:12px;color:var(--text);font-weight:700;font-size:2rem;white-space:nowrap}
-header .brand img{width:40px;height:40px;border-radius:10px}
-header nav{display:flex;align-items:center;gap:26px;white-space:nowrap}
-header nav a.plain{color:var(--text3);font-size:1.7rem}
-header nav a.plain:hover{color:var(--text)}
-header nav a.get{background:var(--accent2);color:#fff;font-weight:600;font-size:1.5rem;padding:8px 18px;border-radius:999px}
-header nav a.get:hover{filter:brightness(1.08)}
+/* Nav */
+.bar{position:sticky;top:0;z-index:50;transition:background .3s,border-color .3s,backdrop-filter .3s;border-bottom:1px solid transparent}
+.bar.scrolled{background:var(--navBg);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom-color:var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.brand{display:flex;align-items:center;gap:11px;color:var(--text);font-weight:700;font-size:1.85rem;letter-spacing:-.01em;white-space:nowrap}
+.brand img{width:32px;height:32px;border-radius:8px;box-shadow:0 0 0 .5px var(--line2)}
+.bar nav{display:flex;align-items:center;gap:28px;white-space:nowrap}
+.bar nav a.plain{color:var(--text2);font-size:1.5rem;font-weight:500;transition:color .2s}
+.bar nav a.plain:hover{color:var(--text)}
+.bar nav a.get{background:var(--text);color:var(--bg);font-weight:600;font-size:1.4rem;padding:8px 16px;border-radius:999px;transition:opacity .2s}
+.bar nav a.get:hover{opacity:.85}
 
-.hero{text-align:center;padding:40px 0 0}
-.hero .icon{width:112px;height:112px;border-radius:26px;margin:0 auto;box-shadow:0 12px 40px rgba(10,132,255,.25)}
-.hero .name{font-size:2.2rem;font-weight:700;margin-top:18px;color:var(--text2)}
-.hero h1{font-size:8.4rem;line-height:1.02;font-weight:900;letter-spacing:-.02em;margin:14px auto 0;max-width:900px;text-wrap:balance}
-.hero .lede{color:var(--text2);font-size:2.3rem;line-height:1.5;margin:24px auto 0;max-width:640px}
-.hero .cta{margin-top:34px;display:flex;flex-direction:column;align-items:center;gap:12px}
-.hero .cta .aiHeroLink{font-size:1.6rem;color:var(--accent2);padding:8px 0}
-.hero .cta .aiHeroLink:hover{text-decoration:underline}
-.hero .cta span{color:var(--text3);font-size:1.5rem}
-.heroArt{position:relative;height:720px;margin-top:60px;overflow:hidden}
-.heroArt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:40px;background:linear-gradient(transparent,var(--bg));z-index:5;pointer-events:none}
+/* Hero */
+.hero{position:relative;text-align:center;padding:64px 0 0}
+.hero::before{content:"";position:absolute;left:50%;top:-140px;width:min(1100px,100vw);height:900px;transform:translateX(-50%);background:radial-gradient(closest-side at 38% 60%,var(--glowA),transparent),radial-gradient(closest-side at 64% 46%,var(--glowB),transparent);filter:blur(30px);pointer-events:none;z-index:-1}
+.hero .icon{width:96px;height:96px;border-radius:22px;margin:0 auto;box-shadow:0 18px 50px -10px rgba(10,132,255,.45),0 0 0 .5px var(--line2)}
+.hero h1{font-size:9.6rem;margin:30px auto 0;max-width:980px}
+.hero .lede{color:var(--text2);font-size:2.2rem;line-height:1.5;margin:26px auto 0;max-width:620px;text-wrap:pretty}
+.hero .cta{margin-top:36px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+.hero .cta .btn{height:54px;padding:0 22px;font-size:1.6rem}
+.hero .fine{display:block;color:var(--text3);font-size:1.4rem;margin-top:16px;letter-spacing:.01em}
+.heroArt{position:relative;height:740px;margin-top:64px;overflow:hidden}
+.heroArt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:160px;background:linear-gradient(transparent,var(--bg));z-index:5;pointer-events:none}
 .heroArt .phone{position:absolute}
-.heroArt .p1{width:320px;left:50%;top:0;margin-left:-160px;z-index:3}
-.heroArt .p2{width:270px;left:50%;top:90px;margin-left:-450px;transform:rotate(-7deg);z-index:2}
-.heroArt .p3{width:270px;left:50%;top:90px;margin-left:180px;transform:rotate(7deg);z-index:2}
+.heroArt .p1{width:330px;left:50%;top:0;margin-left:-165px;z-index:3}
+.heroArt .p2{width:280px;left:50%;top:96px;margin-left:-470px;transform:rotate(-8deg);z-index:2}
+.heroArt .p3{width:280px;left:50%;top:96px;margin-left:190px;transform:rotate(8deg);z-index:2}
+@media (prefers-reduced-motion: no-preference){
+  .heroArt .phone{animation:rise 1.1s cubic-bezier(.2,.8,.2,1) both}
+  .heroArt .p1{animation-delay:.1s}
+  .heroArt .p2,.heroArt .p3{animation-delay:.25s}
+  @keyframes rise{from{opacity:0;translate:0 60px}}
+}
 
-/* Thin bezel: padding on the picture resolves against the phone's own width (percentage padding on .phone resolved against its container, 11-36px). Outer radius = screen radius + bezel. Phone height = 2.112 x width. */
-.phone{background:var(--bezel);padding:0;border-radius:14.45%/6.84%;box-shadow:0 0 0 1px var(--bezelRing),var(--shadow)}
+/* Thin bezel: padding on the picture resolves against the phone's own width. Outer radius = screen radius + bezel. Phone height = 2.112 x width. */
+.phone{background:var(--bezel);padding:0;border-radius:14.45%/6.84%;box-shadow:0 0 0 1px var(--bezelRing),inset 0 0 0 1px rgba(255,255,255,.06),var(--shadow)}
 .phone picture{padding:2.6%}
 .phone img{width:100%;aspect-ratio:1320/2868;border-radius:12.5%/5.75%}
 
-.meet{margin-top:10px;background:var(--newBg);border:1px solid var(--line);border-radius:36px;padding:56px 56px 50px;text-align:center}
-.eyebrow{display:block;color:var(--accent2);font-size:1.4rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
-.meet h2{font-size:5.2rem;line-height:1.08;font-weight:900}
-.meet p{color:var(--text2);font-size:2.1rem;max-width:640px;margin:14px auto 0}
-.meetTiles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px;text-align:left}
-.meetTiles a{display:flex;gap:16px;align-items:flex-start;background:var(--bg);border:1px solid var(--line);border-radius:22px;padding:22px;color:var(--text)}
-.meetTiles i{flex:0 0 44px;height:44px;border-radius:12px;background:var(--accent2);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.8rem}
-.meetTiles b{display:block;font-size:1.9rem;line-height:1.25}
-.meetTiles small{display:block;color:var(--text2);font-size:1.6rem;line-height:1.4;margin-top:4px;font-weight:400}
+/* Meet Quotify 2 */
+.meet{position:relative;display:grid;grid-template-columns:5fr 7fr;gap:56px;align-items:center;background:var(--newBg);border:1px solid var(--line);border-radius:40px;padding:64px;overflow:hidden}
+.meet h2{font-size:5.6rem;margin-top:14px}
+.meet .intro p{color:var(--text2);font-size:2rem;margin-top:16px;max-width:420px;text-wrap:pretty}
+.meetTiles{display:flex;flex-direction:column;gap:12px}
+.meetTiles a{display:grid;grid-template-columns:48px 1fr 20px;gap:18px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px 22px;color:var(--text);transition:transform .25s ease,border-color .25s,box-shadow .25s}
+.meetTiles a:hover{transform:translateY(-2px);border-color:var(--line2);box-shadow:0 18px 40px -20px rgba(0,0,0,.5)}
+.meetTiles i.ic{width:48px;height:48px;border-radius:14px;background:linear-gradient(160deg,#3b9bff,#0a6ae0);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.9rem;box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
+.meetTiles b{display:block;font-size:1.85rem;line-height:1.25;font-weight:650}
+.meetTiles small{display:block;color:var(--text2);font-size:1.55rem;line-height:1.4;margin-top:3px}
+.meetTiles .go{color:var(--text3);font-size:1.4rem;transition:transform .2s,color .2s}
+.meetTiles a:hover .go{transform:translateX(3px);color:var(--text)}
 
-.manifesto{text-align:center;padding:150px 0 40px}
-.manifesto p.big{font-size:5rem;line-height:1.18;font-weight:700;letter-spacing:-.01em;max-width:960px;margin:0 auto}
-.manifesto p.big em{font-style:normal;color:var(--text3)}
-.manifesto p.small{color:var(--text2);font-size:2.3rem;max-width:620px;margin:26px auto 0}
+/* AI band */
+.mcpBand{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:20px;padding:56px 64px;border-radius:40px;background:var(--bg2);border:1px solid var(--line)}
+.mcpBand h2{font-size:4.4rem;margin-top:14px}
+.mcpBand p{color:var(--text2);font-size:1.8rem;line-height:1.55;margin-top:14px;max-width:470px}
+.aiApps{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;list-style:none}
+.aiApps li{font-size:1.35rem;font-weight:600;color:var(--text2);padding:6px 12px;border-radius:999px;background:var(--card);border:1px solid var(--line)}
+.mcpBand .btn{margin-top:26px}
+.chat{display:flex;flex-direction:column;gap:12px;padding:24px;border-radius:28px;background:var(--card);border:1px solid var(--line);box-shadow:0 30px 60px -30px rgba(0,0,0,.5)}
+.chat .msg{max-width:88%;font-size:1.6rem;line-height:1.45;padding:12px 16px;border-radius:20px}
+.chat .me{align-self:flex-end;background:var(--accent);color:#fff;border-bottom-right-radius:6px}
+.chat .ai{align-self:flex-start;background:var(--card2);color:var(--text);border-bottom-left-radius:6px}
+.chat .tool{display:inline-flex;align-items:center;gap:7px;font-size:1.25rem;font-weight:600;color:var(--text3);margin-bottom:8px}
+.chat .tool img{width:18px;height:18px;border-radius:5px}
+.chat blockquote{background:var(--paper);color:var(--paperInk);border-radius:14px;padding:14px 16px;font-size:1.9rem;line-height:1.3}
+.chat blockquote::before{content:"\201C";color:#e07a2b;font-weight:700;margin-right:3px}
+.chat blockquote cite{display:block;font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-style:normal;font-size:1.1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--paperMute);margin-top:8px}
 
-.chapters{display:flex;flex-direction:column;gap:110px;margin-top:100px}
-.chapter{display:grid;grid-template-columns:7fr 5fr;gap:64px;align-items:center}
+/* Manifesto */
+.manifesto{text-align:center;padding:180px 0 40px}
+.manifesto p.big{font-size:6rem;line-height:1.14;font-weight:500;letter-spacing:-.02em;max-width:1000px;margin:0 auto;text-wrap:balance}
+.manifesto p.big em{font-style:italic;color:var(--ember)}
+.manifesto p.small{color:var(--text2);font-size:2.2rem;max-width:600px;margin:30px auto 0;text-wrap:pretty}
+html.js .manifesto .w{opacity:.18;transition:opacity .35s ease}
+html.js .manifesto .w.on{opacity:1}
+
+/* Chapters */
+.chapters{display:flex;flex-direction:column;gap:140px;margin-top:140px}
+.chapter{display:grid;grid-template-columns:7fr 5fr;gap:80px;align-items:center}
 .chapter.flip{grid-template-columns:5fr 7fr}
 .chapter.flip .panel{order:2}
-.panel{position:relative;border-radius:36px;overflow:hidden}
-.panel.tall{height:620px}
+.chapter h3{font-size:5.6rem;line-height:1.04;font-weight:500;letter-spacing:-.022em;margin-top:18px;text-wrap:balance}
+.chapter .body{color:var(--text2);font-size:2rem;line-height:1.6;margin-top:22px;max-width:460px;text-wrap:pretty}
+.panel{position:relative;border-radius:36px;overflow:hidden;isolation:isolate;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 0 0 1px var(--line)}
+.panel::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(90% 60% at 50% 0%,rgba(255,255,255,.18),transparent 70%)}
+.panel::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.22;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.panel.tall{height:640px}
 .panel.tall .phone{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
-.chapter h3{font-size:5.2rem;line-height:1.05;font-weight:900;letter-spacing:-.01em}
-.chapter .body{color:var(--text2);font-size:2.1rem;line-height:1.55;margin-top:20px;max-width:460px}
-.g-brown{background:linear-gradient(160deg,#5a4532,#2c2118)}
-.g-taupe{background:linear-gradient(160deg,#6d6152,#3a3229)}
-.g-orange{background:linear-gradient(160deg,#C46A1C,#7A3A0C)}
-.g-green{background:linear-gradient(160deg,#2E7A43,#164426)}
-.g-purple{background:linear-gradient(160deg,#6B3BA6,#3A1F63)}
-.g-teal{background:linear-gradient(160deg,#1B6F7A,#0B3940)}
-.homeCrop,.phRot{width:260px}
+.g-brown{background:linear-gradient(165deg,#7a5536 0%,#3a2716 55%,#21160d 100%)}
+.g-taupe{background:linear-gradient(165deg,#7b6f60 0%,#3e362d 60%,#241f1a 100%)}
+.g-teal{background:linear-gradient(165deg,#2d5f8f 0%,#163352 55%,#0c1b2d 100%)}
+.g-green{background:linear-gradient(165deg,#5b7a54 0%,#2c3f29 60%,#182316 100%)}
+.g-orange{background:linear-gradient(165deg,#e07f34 0%,#9c4511 60%,#5e2507 100%)}
+.g-purple{background:linear-gradient(165deg,#6e4a86 0%,#3b2650 60%,#1f1430 100%)}
+.homeCrop,.phRot{width:270px}
 .phCard{width:220px}
 
-.photoFlow{padding:44px 44px 40px;display:flex;flex-direction:column;align-items:center}
+.photoFlow{padding:56px 48px 44px;display:flex;flex-direction:column;align-items:center}
 .photoFlow .shot{position:relative;width:100%;max-width:520px}
-.photoFlow .shot img{width:100%;border-radius:12px;transform:rotate(-2deg);box-shadow:0 26px 60px rgba(0,0,0,.45)}
-.photoFlow .shot .tag{position:absolute;left:14px;top:-12px;padding:7px 14px;border-radius:999px;background:#0A84FF;color:#fff;font-size:1.4rem;font-weight:700;transform:rotate(-2deg);display:inline-flex;align-items:center;gap:6px}
-.photoFlow .arrow{color:#fff;font-size:3rem;opacity:.9;margin:20px 0 16px;line-height:1}
-.qrow{width:100%;max-width:520px;background:#fff;border-radius:24px;padding:22px 26px;box-shadow:0 26px 60px rgba(0,0,0,.45);color:#1d1d1f;text-align:left}
+.photoFlow .shot img{width:100%;border-radius:12px;transform:rotate(-2deg);box-shadow:0 30px 60px -10px rgba(0,0,0,.55)}
+.photoFlow .shot .tag{position:absolute;left:14px;top:-14px;padding:7px 14px;border-radius:999px;background:#0a84ff;color:#fff;font-size:1.35rem;font-weight:700;transform:rotate(-2deg);display:inline-flex;align-items:center;gap:7px;box-shadow:0 8px 20px -6px rgba(10,132,255,.6)}
+.photoFlow .arrow{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:1.6rem;display:flex;align-items:center;justify-content:center;margin:22px 0 18px;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.qrow{width:100%;max-width:520px;background:#fffdf8;border-radius:24px;padding:22px 26px;box-shadow:0 30px 60px -10px rgba(0,0,0,.55);color:#1d1d1f;text-align:left}
 .qrow .q{display:flex;gap:12px;font-size:2.7rem;line-height:1.25}
 .qrow .q::before{content:"\201C";color:#E07A2B;font-weight:900;font-size:4.2rem;line-height:.9}
-.qrow .by{display:flex;align-items:center;gap:8px;margin:10px 0 0 34px;font-size:1.35rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.qrow .by{display:flex;align-items:center;gap:8px;margin:10px 0 0 34px;font-size:1.3rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
 .qrow .by i{color:#E07A2B}
-.qrow .by em{font-family:ui-serif,"Iowan Old Style",Charter,Georgia,serif;font-style:italic;font-weight:400;letter-spacing:0;text-transform:none;color:#86868b;font-size:1.7rem}
-.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:22px}
-.chips span{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.16);color:#fff;font-size:1.5rem;font-weight:600}
+.qrow .by em{font-family:ui-serif,"New York","Iowan Old Style",Charter,Georgia,serif;font-style:italic;font-weight:400;letter-spacing:0;text-transform:none;color:#86868b;font-size:1.7rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:24px}
+.chips span{display:inline-flex;align-items:center;gap:8px;padding:8px 15px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.16);color:#fff;font-size:1.4rem;font-weight:600;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:130px}
-.fcard .panel{height:520px;border-radius:30px}
-.fcard .panel .phone{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
-.fcard h3{font-size:3rem;line-height:1.15;font-weight:900;margin-top:24px}
-.fcard p{color:var(--text2);font-size:1.8rem;margin-top:8px}
-.shareArt{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:28px}
-.shareArt .card{width:200px;border-radius:14px;overflow:hidden;transform:rotate(-3deg);box-shadow:0 30px 70px rgba(0,0,0,.45)}
+/* Feature cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:160px}
+.fcard .panel{height:540px;border-radius:32px}
+.fcard .panel .phone{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.fcard:hover .panel .phone{transform:translate(-50%,-52%)}
+.fcard h3{font-size:3.1rem;line-height:1.12;font-weight:500;letter-spacing:-.015em;margin-top:26px;text-wrap:balance}
+.fcard p{color:var(--text2);font-size:1.75rem;margin-top:10px;text-wrap:pretty}
+.shareArt{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:28px}
+.shareArt .card{width:200px;border-radius:14px;overflow:hidden;transform:rotate(-3deg);box-shadow:0 30px 70px -10px rgba(0,0,0,.55);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.fcard:hover .shareArt .card{transform:rotate(-1deg) translateY(-6px)}
 .shareArt .card img{width:100%;transform:scale(1.012)}
-.shareArt .bar{width:88%;max-width:320px;background:#fff;border-radius:30px;padding:7px;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.shareArt .bar{width:88%;max-width:320px;background:#fff;border-radius:30px;padding:7px;box-shadow:0 20px 50px -10px rgba(0,0,0,.5)}
 .shareArt .bar img{width:100%}
 
-.wall{padding:150px 0 0;text-align:center}
-.wall h2,.more h2{font-size:5.2rem;line-height:1.08;font-weight:900}
-.wall .sub{color:var(--text2);font-size:2.1rem;margin-top:12px}
-.wallGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:50px;text-align:left}
-.wq{background:var(--qcard);border:1px solid var(--line);border-radius:24px;padding:26px 24px 22px;display:flex;flex-direction:column;justify-content:space-between}
-.wq p{font-size:2.3rem;line-height:1.3}
-.wq p::before{content:"\201C";color:var(--quote);font-weight:900;margin-right:4px}
-.wq span{display:block;margin-top:16px;font-size:1.25rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text2)}
-.wq span em{display:block;font-family:ui-serif,"Iowan Old Style",Charter,Georgia,serif;font-style:italic;font-weight:400;letter-spacing:0;text-transform:none;font-size:1.6rem;color:var(--text3);margin-top:2px}
-.wq.t2{grid-row:span 2}
+/* Quote wall */
+.wall{padding:180px 0 0}
+.wallGrid{columns:3;column-gap:20px;margin-top:60px}
+.wq{break-inside:avoid;margin-bottom:20px;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:32px 30px 28px;position:relative;overflow:hidden;transition:transform .3s ease}
+.wq:hover{transform:translateY(-3px) rotate(-.3deg)}
+.wq::before{content:"\201C";position:absolute;right:18px;top:-18px;font-family:ui-serif,"New York","Iowan Old Style",Georgia,serif;font-size:16rem;line-height:1;color:var(--ember);opacity:.12;pointer-events:none}
+.wq p{font-size:2.6rem;line-height:1.28;letter-spacing:-.01em;position:relative}
+.wq p::before{content:"\201C";color:var(--ember);font-weight:700;margin-right:4px}
+.wq span{display:block;margin-top:22px;font-size:1.2rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text2)}
+.wq span em{display:block;font-family:ui-serif,"New York","Iowan Old Style",Charter,Georgia,serif;font-style:italic;font-weight:400;letter-spacing:0;text-transform:none;font-size:1.6rem;color:var(--text3);margin-top:3px}
+.wq.t2 p{font-size:3.2rem;line-height:1.2}
+.wq.paper{background:var(--paper);color:var(--paperInk);border-color:transparent}
+.wq.paper span{color:var(--paperInk)}
+.wq.paper span em{color:var(--paperMute)}
+.wq.paper p::before,.wq.paper::before{color:#d0702a}
+.wq.ember{background:linear-gradient(165deg,#e8843a,#a84a12);color:#fff;border-color:transparent}
+.wq.ember p::before,.wq.ember::before{color:#ffe2c8}
+.wq.ember span{color:#fff}
+.wq.ember span em{color:rgba(255,255,255,.75)}
+.wq.blue{background:linear-gradient(165deg,#2d6fd6,#123a7a);color:#fff;border-color:transparent}
+.wq.blue p::before,.wq.blue::before{color:#bcd6ff}
+.wq.blue span{color:#fff}
 
-.more{padding:150px 0 0;text-align:center}
-.moreChips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:960px;margin:40px auto 0}
-.moreChips span{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;background:var(--pill);border:1px solid var(--line);font-size:1.75rem;font-weight:600}
-.moreChips i{color:var(--accent2)}
+/* More */
+.more{padding:180px 0 0}
+.moreGrid{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:56px auto 0;list-style:none}
+.moreGrid li{flex:0 0 calc((100% - 36px)/4);display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:20px;background:var(--card);border:1px solid var(--line);font-size:1.65rem;font-weight:600;line-height:1.3}
+.moreGrid i{flex:0 0 38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:var(--emberSoft);color:var(--ember);font-size:1.6rem}
 
-.mcpBand{display:flex;align-items:center;gap:20px;margin:90px 0 0;padding:30px 26px;border-radius:28px;background:var(--card);border:1px solid var(--line)}
-.mcpBand .mcpIcon{flex:0 0 46px;height:46px;border-radius:12px;background:var(--accent2);color:#fff;display:flex;align-items:center;justify-content:center;font-size:2rem}
-.mcpBand .mcpText{flex:1;min-width:0}
-.mcpBand .eyebrow{font-size:1.2rem;margin-bottom:4px}
-.mcpBand h2{font-size:2.4rem;line-height:1.2;font-weight:900}
-.mcpBand p{color:var(--text2);font-size:1.6rem;line-height:1.6;margin-top:10px}
-.mcpBand a.mcpLink{flex:0 0 auto;display:inline-flex;align-items:center;padding:10px 18px;border-radius:999px;background:var(--pill);border:1px solid var(--line);color:var(--text);font-size:1.5rem;font-weight:600;white-space:nowrap}
-.mcpBand a.mcpLink:hover{border-color:var(--accent2)}
-.mcpBand a.mcpLink:focus-visible{outline:2px solid var(--accent2);outline-offset:2px}
-.meet + .mcpBand{margin-top:48px}
+/* Close */
+.close{position:relative;margin:180px 0 0;padding:100px 30px 90px;text-align:center;border-radius:48px;background:var(--newBg);border:1px solid var(--line);overflow:hidden;isolation:isolate}
+.close::before{content:"\201C";position:absolute;left:50%;top:-80px;transform:translateX(-50%);font-family:ui-serif,"New York","Iowan Old Style",Georgia,serif;font-size:56rem;line-height:1;color:var(--ember);opacity:.07;z-index:-1;pointer-events:none}
+.close .icon{width:112px;height:112px;border-radius:26px;margin:0 auto;box-shadow:0 24px 60px -12px rgba(10,132,255,.55),0 0 0 .5px var(--line2)}
+.close h2{font-size:8rem;margin-top:32px}
+.close p{color:var(--text2);font-size:2.2rem;margin:16px auto 0;max-width:560px}
+.close .badge{margin-top:36px}
+.close .fine{color:var(--text3);font-size:1.5rem;margin:24px auto 0;max-width:560px}
 
-.close{margin:150px 0 0;padding:80px 30px 70px;text-align:center;border-radius:40px;background:var(--newBg);border:1px solid var(--line)}
-.close .icon{width:120px;height:120px;border-radius:28px;margin:0 auto}
-.close h2{font-size:6.4rem;line-height:1.05;font-weight:900;margin-top:26px}
-.close p{color:var(--text2);font-size:2.2rem;margin:12px auto 0;max-width:560px}
-.close .badge{margin-top:30px}
-.close .fine{color:var(--text3);font-size:1.6rem;margin:22px auto 0;max-width:640px}
-
-footer{padding:32px 0 32px;text-align:center}
-.footerText{color:var(--text3);font-size:1.6rem;margin-top:0;line-height:1.5}
-.footerLinks{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 26px;margin-top:22px;font-size:1.5rem}
-.footerText a,.footerLinks a{color:var(--text3)}
+/* Footer */
+footer{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:48px 0 56px;margin-top:40px}
+footer .brand{font-size:1.6rem}
+footer .brand img{width:26px;height:26px;border-radius:6px}
+.footerText{color:var(--text3);font-size:1.4rem;margin-left:12px;font-weight:400}
+.footerText a{color:var(--text3)}
+.footerLeft{display:flex;align-items:center}
+.footerLinks{display:flex;flex-wrap:wrap;gap:10px 26px;font-size:1.4rem}
+.footerLinks a{color:var(--text3);transition:color .2s}
 .footerText a:hover,.footerLinks a:hover{color:var(--text)}
 
-@media (max-width: 1000px){
-  .hero h1{font-size:6.6rem}
-  .heroArt{height:600px}
-  .heroArt .p1{width:270px;margin-left:-135px}
-  .heroArt .p2,.heroArt .p3{width:220px;top:70px}
-  .heroArt .p2{margin-left:-345px}
-  .heroArt .p3{margin-left:125px}
-  .chapter h3{font-size:4.2rem}
-  .meet h2,.wall h2,.more h2{font-size:4.4rem}
-  .manifesto p.big{font-size:4rem}
+/* Scroll reveal (only when JS runs and motion is fine) */
+@media (prefers-reduced-motion: no-preference){
+  html.js .rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+  html.js .rv.in{opacity:1;transform:none}
+}
+
+@media (max-width: 1080px){
+  .hero h1{font-size:7.6rem}
+  .heroArt{height:620px}
+  .heroArt .p1{width:280px;margin-left:-140px}
+  .heroArt .p2,.heroArt .p3{width:230px;top:76px}
+  .heroArt .p2{margin-left:-370px}
+  .heroArt .p3{margin-left:140px}
+  .meet{grid-template-columns:1fr;gap:36px;padding:52px}
+  .mcpBand{grid-template-columns:1fr;gap:36px;padding:52px}
+  .chapter{gap:48px}
+  .chapter h3{font-size:4.4rem}
+  .meet h2,.sectionHead h2{font-size:5rem}
+  .manifesto p.big{font-size:4.8rem}
+  .wq p{font-size:2.3rem}
+  .wq.t2 p{font-size:2.7rem}
+  .moreGrid li{flex-basis:calc((100% - 24px)/3)}
+  .close h2{font-size:6.6rem}
 }
 
 @media (max-width: 768px){
-  .wrap{padding:0 16px}
-  header{height:72px}
-  header .brand{font-size:1.8rem}
-  header .brand img{width:34px;height:34px;border-radius:8px}
-  header nav{gap:16px}
-  header nav a.plain{font-size:1.5rem}
-  header nav a.get{font-size:1.4rem;padding:7px 14px}
-  .hero{padding-top:22px}
-  .hero .icon{width:84px;height:84px;border-radius:20px}
-  .hero .name{font-size:1.8rem;margin-top:12px}
-  .hero h1{font-size:4.8rem;line-height:1.04}
-  .hero .lede{font-size:1.85rem;margin-top:16px}
-  .hero .cta{margin-top:26px}
+  html{scroll-padding-top:64px}
+  .wrap{padding:0 18px}
+  .bar .wrap{height:58px}
+  .brand{font-size:1.7rem}
+  .brand img{width:28px;height:28px;border-radius:7px}
+  .bar nav{gap:18px}
+  .bar nav a.plain{font-size:1.4rem}
+  .bar nav a.get{font-size:1.35rem;padding:7px 14px}
+  .hero{padding-top:36px}
+  .hero::before{top:-100px;height:700px}
+  .hero .icon{width:76px;height:76px;border-radius:18px}
+  .hero h1{font-size:5.4rem;line-height:1.02;margin-top:22px}
+  .hero .lede{font-size:1.85rem;margin-top:18px}
+  .hero .cta{margin-top:28px;flex-direction:column;gap:12px}
+  .hero .cta .btn{height:auto;padding:10px 18px;font-size:1.5rem}
   .badge img{height:50px}
-  .heroArt{height:calc(min(56vw,270px)*2.112 + 36px);margin:40px -16px 0}
-  .heroArt::after{height:30px}
-  .heroArt .p1{width:56%;margin-left:-28%}
-  .heroArt .p2,.heroArt .p3{width:44%;top:60px}
-  .heroArt .p2{margin-left:-63%}
-  .heroArt .p3{margin-left:19%}
+  .heroArt{height:calc(min(56vw,270px)*2.112 + 36px);margin:44px -18px 0}
+  .heroArt::after{height:70px}
   .heroArt .p1{width:min(56%,270px);margin-left:max(-28%,-135px)}
-  .heroArt .p2,.heroArt .p3{width:min(44%,220px)}
+  .heroArt .p2,.heroArt .p3{width:min(44%,220px);top:60px}
   .heroArt .p2{margin-left:max(-63%,-345px)}
   .heroArt .p3{margin-left:min(19%,125px)}
-  .meet{border-radius:28px;padding:36px 18px 22px}
-  .meet h2{font-size:3.6rem}
-  .meet p{font-size:1.8rem}
-  .meetTiles{grid-template-columns:1fr;gap:10px;margin-top:26px}
-  .meetTiles a{padding:16px;border-radius:18px}
-  .meetTiles b{font-size:1.75rem}
-  .meetTiles small{font-size:1.5rem}
-  .manifesto{padding:96px 4px 10px}
-  .manifesto p.big{font-size:3.1rem}
-  .manifesto p.small{font-size:1.85rem;margin-top:18px}
-  .chapters{gap:72px;margin-top:64px}
-  .chapter,.chapter.flip{grid-template-columns:1fr;gap:26px;text-align:center}
+  .eyebrow{font-size:1.2rem}
+  .meet{border-radius:30px;padding:36px 20px 20px;gap:26px;text-align:center}
+  .meet .intro p{margin-left:auto;margin-right:auto;font-size:1.8rem}
+  .meet h2{font-size:4.2rem}
+  .meetTiles a{grid-template-columns:42px 1fr 14px;gap:14px;padding:16px;border-radius:18px;text-align:left}
+  .meetTiles i.ic{width:42px;height:42px;border-radius:12px;font-size:1.7rem}
+  .meetTiles b{font-size:1.7rem}
+  .meetTiles small{font-size:1.45rem}
+  .mcpBand{padding:36px 20px 20px;border-radius:30px;gap:28px;margin-top:14px;text-align:center}
+  .mcpBand p{margin-left:auto;margin-right:auto}
+  .aiApps{justify-content:center}
+  .chat{text-align:left}
+  .mcpBand h2{font-size:3.4rem}
+  .mcpBand p{font-size:1.7rem}
+  .chat{padding:16px;border-radius:22px}
+  .chat .msg{font-size:1.5rem}
+  .chat blockquote{font-size:1.75rem}
+  .manifesto{padding:120px 2px 10px}
+  .manifesto p.big{font-size:3.5rem;line-height:1.16}
+  .manifesto p.small{font-size:1.85rem;margin-top:20px}
+  .chapters{gap:88px;margin-top:80px}
+  .chapter,.chapter.flip{grid-template-columns:1fr;gap:28px;text-align:center}
   .chapter.flip .panel{order:0}
+  .chapter .body{font-size:1.8rem;margin:16px auto 0}
+  .chapter h3{font-size:3.8rem;margin-top:12px}
   .panel{border-radius:28px}
   .panel.tall{height:540px}
-  .chapter h3{font-size:3.6rem}
-  .chapter .body{font-size:1.8rem;margin:14px auto 0}
   .homeCrop,.phRot{width:230px}
-  .photoFlow{padding:30px 18px 24px}
-  .photoFlow .shot .tag{font-size:1.25rem;padding:6px 12px;left:10px;top:-10px}
-  .photoFlow .arrow{font-size:2.4rem;margin:16px 0 12px}
+  .photoFlow{padding:34px 18px 26px}
+  .photoFlow .shot .tag{font-size:1.2rem;padding:6px 12px;left:10px;top:-10px}
+  .photoFlow .arrow{width:34px;height:34px;font-size:1.4rem;margin:16px 0 14px}
   .qrow{border-radius:20px;padding:16px 18px}
   .qrow .q{font-size:2.1rem;gap:8px}
   .qrow .q::before{font-size:3.2rem}
-  .qrow .by{margin-left:26px;font-size:1.15rem;flex-wrap:wrap;gap:4px 7px}
+  .qrow .by{margin-left:26px;font-size:1.1rem;flex-wrap:wrap;gap:4px 7px}
   .qrow .by em{font-size:1.45rem}
-  .chips{gap:6px;margin-top:16px}
-  .chips span{font-size:1.3rem;padding:7px 11px;gap:6px}
-  .cards{grid-template-columns:1fr;gap:56px;margin-top:80px;text-align:center}
+  .chips{gap:6px;margin-top:18px}
+  .chips span{font-size:1.25rem;padding:6px 11px;gap:6px}
+  .cards{grid-template-columns:1fr;gap:64px;margin-top:100px;text-align:center}
   .fcard .panel{height:520px}
   .fcard h3{font-size:3rem}
-  .wall,.more{padding-top:96px}
-  .wall h2,.more h2{font-size:3.6rem}
-  .wall .sub{font-size:1.8rem}
-  .wallGrid{grid-template-columns:1fr 1fr;gap:10px;margin-top:30px}
-  .wq{padding:16px 14px 14px;border-radius:18px}
-  .wq p{font-size:1.75rem}
-  .wq span{font-size:1.05rem;margin-top:10px}
+  .wall,.more{padding-top:120px}
+  .sectionHead h2{font-size:4.2rem}
+  .sectionHead p{font-size:1.8rem}
+  .wallGrid{columns:2;column-gap:10px;margin-top:36px}
+  .wq{margin-bottom:10px;padding:20px 16px 16px;border-radius:20px}
+  .wq::before{font-size:10rem;right:8px;top:-10px}
+  .wq p,.wq.t2 p{font-size:1.85rem;line-height:1.25}
+  .wq span{font-size:1rem;margin-top:14px}
   .wq span em{font-size:1.35rem}
   .wq.hideM{display:none}
-  .wq.t2{grid-row:auto}
-  .moreChips{gap:8px;margin-top:26px}
-  .moreChips span{font-size:1.5rem;padding:9px 14px;gap:8px}
-  .mcpBand{flex-wrap:wrap;align-items:flex-start;gap:14px 16px;margin-top:64px;padding:22px 18px;border-radius:22px}
-  .mcpBand .mcpIcon{flex-basis:42px;height:42px;font-size:1.8rem}
-  .mcpBand .mcpText{flex-basis:calc(100% - 58px)}
-  .mcpBand h2{font-size:2.1rem}
-  .mcpBand p{font-size:1.5rem}
-  .mcpBand a.mcpLink{margin-left:58px}
-  .meet + .mcpBand{margin-top:32px}
-  .close{margin-top:96px;padding:54px 18px 46px;border-radius:30px}
-  .close .icon{width:92px;height:92px;border-radius:21px}
-  .close h2{font-size:4.6rem}
+  .moreGrid{gap:8px;margin-top:32px}
+  .moreGrid li{flex-basis:calc((100% - 8px)/2);gap:10px;padding:12px;border-radius:16px;font-size:1.4rem}
+  .moreGrid i{flex-basis:32px;height:32px;border-radius:9px;font-size:1.35rem}
+  .close{margin-top:120px;padding:64px 20px 52px;border-radius:32px}
+  .close::before{font-size:36rem;top:-50px}
+  .close .icon{width:88px;height:88px;border-radius:20px}
+  .close h2{font-size:5.2rem;margin-top:24px}
   .close p{font-size:1.85rem}
+  footer{flex-direction:column;gap:18px;padding:40px 0 44px;margin-top:20px;text-align:center}
+  .footerLeft{flex-direction:column;gap:8px}
+  .footerText{margin-left:0}
+  .footerLinks{justify-content:center;gap:10px 20px}
 }
 
 .heroDots{display:none}
 /* Phone widths: the three-phone hero becomes a native swipe carousel (scroll-snap). JS below adds the per-phone transforms, dots and ARIA. */
 @media (max-width: 430px){
   /* Phone widths: three nav links collide with the brand; Press Kit stays in the footer. */
-  header nav a.navPress{display:none}
-  .heroArt{--slide:min(60vw,250px);height:auto;display:flex;align-items:flex-start;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;touch-action:pan-x pan-y;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:18px calc((100vw - var(--slide))/2) 24px;margin:28px -16px 0}
+  .bar nav a.navPress{display:none}
+  .hero h1{font-size:4.8rem}
+  .heroArt{--slide:min(60vw,250px);height:auto;display:flex;align-items:flex-start;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;touch-action:pan-x pan-y;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:18px calc((100vw - var(--slide))/2) 24px;margin:32px -18px 0}
   .heroArt::-webkit-scrollbar{display:none}
   .heroArt::after{display:none}
-  .heroArt:focus-visible{outline:2px solid var(--accent2);outline-offset:-2px;border-radius:12px}
+  .heroArt:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:12px}
   .heroArt .phone.p1,.heroArt .phone.p2,.heroArt .phone.p3{position:relative;flex:0 0 var(--slide);width:var(--slide);left:auto;top:auto;margin:0;transform:none;scroll-snap-align:center;scroll-snap-stop:always;will-change:transform}
   /* Tuck the side phones a little behind the centre one (centre stays on top via z-index from the script). Only the 2nd/3rd phones get the pull, so the first and last can still snap dead centre. */
   .heroArt .phone + .phone{margin-left:calc(var(--slide) * -0.16);margin-left:round(calc(var(--slide) * -0.16),1px)}
@@ -296,7 +382,7 @@ footer{padding:32px 0 32px;text-align:center}
   .heroDots button{width:24px;height:24px;border:0;background:none;padding:0;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:12px}
   .heroDots button::before{content:"";width:7px;height:7px;border-radius:4px;background:var(--text3);opacity:.55;transition:width .2s,opacity .2s,background .2s}
   .heroDots button[aria-current="true"]::before{width:18px;opacity:1;background:var(--text)}
-  .heroDots button:focus-visible{outline:2px solid var(--accent2);outline-offset:0}
+  .heroDots button:focus-visible{outline:2px solid var(--accent);outline-offset:0}
 }
 @media (max-width: 430px) and (prefers-reduced-motion: reduce){
   .heroArt{gap:12px}
@@ -304,29 +390,30 @@ footer{padding:32px 0 32px;text-align:center}
   .heroDots button::before{transition:none}
 }
 </style>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-<div class="wrap">
-
-<header>
-  <a class="brand" href="/"><img src="assets/2/appicon.png" width="512" height="512" alt="">Quotify</a>
-  <nav>
-    <a class="plain" href="https://mcp.quotify.to/">Use with AI</a>
-    <a class="plain navPress" href="/press/">Press Kit</a>
-    <a class="get" href="https://apps.apple.com/app/id1626937020">Download</a>
-  </nav>
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="assets/2/appicon.png" width="512" height="512" alt="">Quotify</a>
+    <nav>
+      <a class="plain" href="https://mcp.quotify.to/">Use with AI</a>
+      <a class="plain navPress" href="/press/">Press Kit</a>
+      <a class="get" href="https://apps.apple.com/app/id1626937020">Download</a>
+    </nav>
+  </div>
 </header>
+<main class="wrap">
 
 <section class="hero">
   <img class="icon" src="assets/2/appicon.png" width="512" height="512" alt="Quotify app icon">
-  <div class="name">Quotify</div>
-  <h1 class="serif">Keep the words that move you.</h1>
+  <h1 class="serif display">Keep the words <em>that move you.</em></h1>
   <p class="lede">Save quotes from books, articles, podcasts and conversations in seconds. Then see them again every day on your Home Screen and Lock Screen.</p>
   <div class="cta">
     <a class="badge" href="https://apps.apple.com/app/id1626937020"><img src="assets/2/appstore.svg" width="120" height="40" alt="Download on the App Store"></a>
-    <span>For iPhone and iPad</span>
-    <a class="aiHeroLink" href="https://mcp.quotify.to/">Connect your quotes to AI →</a>
+    <a class="btn ghost" href="https://mcp.quotify.to/">Connect your quotes to AI <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
   </div>
+  <span class="fine">Free for iPhone and iPad</span>
   <div class="heroArt">
     <div class="phone p2"><picture><source srcset="assets/2/screen-home-660w.webp 660w, assets/2/screen-home.webp 1320w" type="image/webp" sizes="(max-width:430px) 60vw, (max-width:768px) 44vw, 270px"><img src="assets/2/screen-home.jpg" srcset="assets/2/screen-home-660w.jpg 660w, assets/2/screen-home.jpg 1320w" sizes="(max-width:430px) 60vw, (max-width:768px) 44vw, 270px" width="1320" height="2868" alt="Quotify widgets on the Home Screen"></picture></div>
     <div class="phone p1"><picture><source srcset="assets/2/screen-library-660w.webp 660w, assets/2/screen-library.webp 1320w" type="image/webp" sizes="(max-width:430px) 60vw, (max-width:768px) 56vw, 320px"><img src="assets/2/screen-library.jpg" srcset="assets/2/screen-library-660w.jpg 660w, assets/2/screen-library.jpg 1320w" sizes="(max-width:430px) 60vw, (max-width:768px) 56vw, 320px" width="1320" height="2868" alt="A Quotify library of saved quotes"></picture></div>
@@ -391,70 +478,82 @@ footer{padding:32px 0 32px;text-align:center}
 </script>
 </section>
 
-<section class="meet" id="new">
-  <span class="eyebrow">New</span>
-  <h2 class="serif">Meet Quotify 2</h2>
-  <p>A fresh new design, quotes from any photo, and new ways to choose which quotes you see each day.</p>
+<section class="meet rv" id="new">
+  <div class="intro">
+    <span class="eyebrow">New</span>
+    <h2 class="serif display">Meet Quotify&nbsp;2</h2>
+    <p>A fresh new design, quotes from any photo, and new ways to choose which quotes you see each day.</p>
+  </div>
   <div class="meetTiles">
-    <a href="#photo"><i class="fas fa-camera"></i><span><b>Smart Photo to Quote</b><small>Take or choose a photo and get the quote and author.</small></span></a>
-    <a href="#design"><i class="fas fa-wand-magic-sparkles"></i><span><b>A fresh new design</b><small>Cleaner quote rows and Liquid Glass controls.</small></span></a>
-    <a href="#favorites"><i class="fas fa-star"></i><span><b>Choose which quotes show</b><small>Just your Favorites, or any field you've added.</small></span></a>
+    <a href="#photo"><i class="ic fas fa-camera" aria-hidden="true"></i><span><b>Smart Photo to Quote</b><small>Take or choose a photo and get the quote and author.</small></span><i class="go fas fa-arrow-right" aria-hidden="true"></i></a>
+    <a href="#design"><i class="ic fas fa-wand-magic-sparkles" aria-hidden="true"></i><span><b>A fresh new design</b><small>Cleaner quote rows and Liquid Glass controls.</small></span><i class="go fas fa-arrow-right" aria-hidden="true"></i></a>
+    <a href="#favorites"><i class="ic fas fa-star" aria-hidden="true"></i><span><b>Choose which quotes show</b><small>Just your Favorites, or any field you've added.</small></span><i class="go fas fa-arrow-right" aria-hidden="true"></i></a>
   </div>
 </section>
 
-<section id="ai-apps" class="mcpBand" aria-labelledby="mcpBandTitle">
-  <div class="mcpIcon" aria-hidden="true"><i class="fas fa-comments"></i></div>
+<section id="ai-apps" class="mcpBand rv" aria-labelledby="mcpBandTitle">
   <div class="mcpText">
     <span class="eyebrow">Connect your AI</span>
-    <h2 id="mcpBandTitle" class="serif">Your quotes, in your AI chats.</h2>
-    <p>Find saved quotes or, with your permission, save new ones. Works with Claude, Claude Code, Codex, ChatGPT, Cursor, Grok Bot and Muse.</p>
+    <h2 id="mcpBandTitle" class="serif display">Your quotes, in your AI&nbsp;chats.</h2>
+    <p>Find saved quotes or, with your permission, save new ones. Works with:</p>
+    <ul class="aiApps"><li>Claude</li><li>Claude Code</li><li>Codex</li><li>ChatGPT</li><li>Cursor</li><li>Grok Bot</li><li>Muse</li></ul>
+    <a class="btn ghost" href="https://mcp.quotify.to/">Connect your AI <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
   </div>
-  <a class="mcpLink" href="https://mcp.quotify.to/">Connect your AI →</a>
+  <div class="chat" aria-hidden="true">
+    <div class="msg me">Find that Seneca quote I saved about worry.</div>
+    <div class="msg ai">
+      <span class="tool"><img src="assets/2/appicon.png" width="512" height="512" alt="">Searched Quotify</span>
+      <blockquote class="serif">We suffer more often in imagination than in reality.<cite>Seneca</cite></blockquote>
+    </div>
+  </div>
 </section>
 
 <section class="manifesto" id="design">
   <p class="big serif">The line you underlined. The one from the podcast. <em>The screenshot you'll never find again.</em></p>
-  <p class="small">Quotify keeps them all in one beautiful place, and brings them back when you need them most.</p>
+  <p class="small rv">Quotify keeps them all in one beautiful place, and brings them back when you need them most.</p>
 </section>
 
 <div class="chapters">
   <div class="chapter" id="photo">
-    <div class="panel g-brown photoFlow">
+    <div class="panel g-brown photoFlow rv">
       <div class="shot">
         <picture>
           <source srcset="assets/2/photo-walden-p99-960w.webp 960w, assets/2/photo-walden-p99.webp 1600w" type="image/webp" sizes="(max-width:768px) 90vw, 520px">
-          <img src="assets/2/photo-walden-p99.jpg" width="1600" height="995" alt="A photo of a page from Walden with one line highlighted" sizes="(max-width:768px) 90vw, 520px">
+          <img src="assets/2/photo-walden-p99.jpg" width="1600" height="995" alt="A photo of a page from Walden with one line highlighted" sizes="(max-width:768px) 90vw, 520px" loading="lazy" decoding="async">
         </picture>
-        <span class="tag"><i class="fas fa-camera"></i> Smart Photo to Quote</span>
+        <span class="tag"><i class="fas fa-camera" aria-hidden="true"></i> Smart Photo to Quote</span>
       </div>
-      <div class="arrow"><i class="fas fa-arrow-down"></i></div>
+      <div class="arrow" aria-hidden="true"><i class="fas fa-arrow-down"></i></div>
       <div class="qrow">
         <div class="q serif">Our life is frittered away by detail.</div>
-        <div class="by"><i class="fas fa-book-open"></i>Henry David Thoreau <em>· Walden</em></div>
+        <div class="by"><i class="fas fa-book-open" aria-hidden="true"></i>Henry David Thoreau <em>· Walden</em></div>
       </div>
-      <div class="chips"><span><i class="fas fa-camera"></i>Camera</span><span><i class="fas fa-image"></i>Photos</span><span><i class="fas fa-mobile-screen"></i>Screenshots</span></div>
+      <div class="chips"><span><i class="fas fa-camera" aria-hidden="true"></i>Camera</span><span><i class="fas fa-image" aria-hidden="true"></i>Photos</span><span><i class="fas fa-mobile-screen" aria-hidden="true"></i>Screenshots</span></div>
     </div>
-    <div class="text">
+    <div class="text rv">
+      <span class="eyebrow"><span class="num">01</span>Smart Photo to Quote</span>
       <h3 class="serif">Snap a page. Keep the words.</h3>
       <p class="body">Take or choose any photo, like a book page, a sign or a screenshot, and Quotify pulls the quote and author for you. No retyping.</p>
     </div>
   </div>
 
   <div class="chapter flip">
-    <div class="panel tall g-taupe">
-      <div class="phone homeCrop"><picture><source srcset="assets/2/screen-home-notif-660w.webp 660w, assets/2/screen-home-notif.webp 1320w" type="image/webp" sizes="(max-width:768px) 230px, 260px"><img src="assets/2/screen-home-notif.jpg" srcset="assets/2/screen-home-notif-660w.jpg 660w, assets/2/screen-home-notif.jpg 1320w" sizes="(max-width:768px) 230px, 260px" width="1320" height="2868" alt="A Daily Quote notification above Quotify widgets" loading="lazy" decoding="async"></picture></div>
+    <div class="panel tall g-taupe rv">
+      <div class="phone homeCrop"><picture><source srcset="assets/2/screen-home-notif-660w.webp 660w, assets/2/screen-home-notif.webp 1320w" type="image/webp" sizes="(max-width:768px) 230px, 270px"><img src="assets/2/screen-home-notif.jpg" srcset="assets/2/screen-home-notif-660w.jpg 660w, assets/2/screen-home-notif.jpg 1320w" sizes="(max-width:768px) 230px, 270px" width="1320" height="2868" alt="A Daily Quote notification above Quotify widgets" loading="lazy" decoding="async"></picture></div>
     </div>
-    <div class="text">
+    <div class="text rv">
+      <span class="eyebrow"><span class="num">02</span>Widgets and reminders</span>
       <h3 class="serif">A quote a day, right where you look.</h3>
       <p class="body">Home Screen and Lock Screen widgets show quotes from your own library and update the moment you add one. Daily reminders bring a quote to you, even on days you forget to look.</p>
     </div>
   </div>
 
   <div class="chapter" id="favorites">
-    <div class="panel tall g-teal">
-      <div class="phone phRot"><picture><source srcset="assets/2/screen-rotation-660w.webp 660w, assets/2/screen-rotation.webp 1320w" type="image/webp" sizes="(max-width:768px) 230px, 260px"><img src="assets/2/screen-rotation.jpg" srcset="assets/2/screen-rotation-660w.jpg 660w, assets/2/screen-rotation.jpg 1320w" sizes="(max-width:768px) 230px, 260px" width="1320" height="2868" alt="Choosing Favorites as the quotes to show, with a live widget preview" loading="lazy" decoding="async"></picture></div>
+    <div class="panel tall g-teal rv">
+      <div class="phone phRot"><picture><source srcset="assets/2/screen-rotation-660w.webp 660w, assets/2/screen-rotation.webp 1320w" type="image/webp" sizes="(max-width:768px) 230px, 270px"><img src="assets/2/screen-rotation.jpg" srcset="assets/2/screen-rotation-660w.jpg 660w, assets/2/screen-rotation.jpg 1320w" sizes="(max-width:768px) 230px, 270px" width="1320" height="2868" alt="Choosing Favorites as the quotes to show, with a live widget preview" loading="lazy" decoding="async"></picture></div>
     </div>
-    <div class="text">
+    <div class="text rv">
+      <span class="eyebrow"><span class="num">03</span>Quotes to show</span>
       <h3 class="serif">Your favorites, on repeat.</h3>
       <p class="body">Choose which quotes rotate through your widgets and reminders: everything, just your Favorites, or a single author. The widget preview updates as you pick.</p>
     </div>
@@ -462,12 +561,12 @@ footer{padding:32px 0 32px;text-align:center}
 </div>
 
 <div class="cards">
-  <div class="fcard">
+  <div class="fcard rv">
     <div class="panel g-green"><div class="phone phCard"><picture><source srcset="assets/2/screen-new-quote-660w.webp 660w, assets/2/screen-new-quote.webp 1320w" type="image/webp" sizes="220px"><img src="assets/2/screen-new-quote.jpg" srcset="assets/2/screen-new-quote-660w.jpg 660w, assets/2/screen-new-quote.jpg 1320w" sizes="220px" width="1320" height="2868" alt="The New Quote sheet: photo, paste, audio recording or write it yourself" loading="lazy" decoding="async"></picture></div></div>
     <h3 class="serif">Save it the moment you hear it.</h3>
     <p>Record, paste or add from a photo. Or share straight from Safari and Instagram.</p>
   </div>
-  <div class="fcard">
+  <div class="fcard rv">
     <div class="panel g-orange shareArt">
       <div class="card"><picture><source srcset="assets/2/share-card.webp" type="image/webp"><img src="assets/2/share-card.jpg" width="738" height="1305" alt="A Story share image of an Annie Dillard quote" loading="lazy" decoding="async"></picture></div>
       <div class="bar"><img src="assets/2/share-bar.jpg" width="1260" height="230" alt="Save, Instagram and Share buttons" loading="lazy" decoding="async"></div>
@@ -475,7 +574,7 @@ footer{padding:32px 0 32px;text-align:center}
     <h3 class="serif">Share the lines that move you.</h3>
     <p>Story, Square and Wide images, with one tap to Instagram Stories.</p>
   </div>
-  <div class="fcard">
+  <div class="fcard rv">
     <div class="panel g-purple"><div class="phone phCard"><picture><source srcset="assets/2/screen-search-660w.webp 660w, assets/2/screen-search.webp 1320w" type="image/webp" sizes="220px"><img src="assets/2/screen-search.jpg" srcset="assets/2/screen-search-660w.jpg 660w, assets/2/screen-search.jpg 1320w" sizes="220px" width="1320" height="2868" alt="Searching the library for life" loading="lazy" decoding="async"></picture></div></div>
     <h3 class="serif">Find any quote in seconds.</h3>
     <p>Search, filter and sort by author, book or any field you add.</p>
@@ -483,52 +582,105 @@ footer{padding:32px 0 32px;text-align:center}
 </div>
 
 <section class="wall">
-  <h2 class="serif">Your words. One collection.</h2>
-  <p class="sub">Books, talks, shows and friends, all in one library.</p>
+  <div class="sectionHead rv">
+    <span class="eyebrow">Your library</span>
+    <h2 class="serif display">Your words. One collection.</h2>
+    <p>Books, talks, shows and friends, all in one library.</p>
+  </div>
   <div class="wallGrid">
-    <div class="wq t2"><p class="serif">You may not control all the events that happen to you, but you can decide not to be reduced by them.</p><span>Maya Angelou<em>Letter to My Daughter</em></span></div>
-    <div class="wq"><p class="serif">Be curious, not judgmental.</p><span>Ted Lasso</span></div>
-    <div class="wq t2"><p class="serif">How we spend our days is, of course, how we spend our lives.</p><span>Annie Dillard<em>The Writing Life</em></span></div>
-    <div class="wq"><p class="serif">We suffer more often in imagination than in reality.</p><span>Seneca</span></div>
-    <div class="wq hideM"><p class="serif">Live in the future, then build what's missing.</p><span>Paul Graham</span></div>
-    <div class="wq hideM"><p class="serif">Our life is frittered away by detail.</p><span>Henry David Thoreau<em>Walden</em></span></div>
+    <div class="wq t2 paper rv"><p class="serif">You may not control all the events that happen to you, but you can decide not to be reduced by them.</p><span>Maya Angelou<em>Letter to My Daughter</em></span></div>
+    <div class="wq rv"><p class="serif">Be curious, not judgmental.</p><span>Ted Lasso</span></div>
+    <div class="wq t2 ember rv"><p class="serif">How we spend our days is, of course, how we spend our lives.</p><span>Annie Dillard<em>The Writing Life</em></span></div>
+    <div class="wq rv"><p class="serif">We suffer more often in imagination than in reality.</p><span>Seneca</span></div>
+    <div class="wq blue hideM rv"><p class="serif">Live in the future, then build what's missing.</p><span>Paul Graham</span></div>
+    <div class="wq paper hideM rv"><p class="serif">Our life is frittered away by detail.</p><span>Henry David Thoreau<em>Walden</em></span></div>
   </div>
 </section>
 
 <section class="more">
-  <h2 class="serif">And so much more</h2>
-  <div class="moreChips">
-    <span><i class="fas fa-lock"></i>Lock Screen widgets</span>
-    <span><i class="fas fa-star"></i>Favorites</span>
-    <span><i class="fas fa-microphone"></i>Speak a quote</span>
-    <span><i class="fab fa-safari"></i>Save from Safari</span>
-    <span><i class="fab fa-instagram"></i>Instagram posts to quotes</span>
-    <span><i class="fas fa-tags"></i>Your own fields</span>
-    <span><i class="fas fa-magnifying-glass"></i>Spotlight and Siri</span>
-    <span><i class="fas fa-layer-group"></i>Shortcuts</span>
-    <span><i class="fas fa-cloud"></i>iCloud sync</span>
-    <span><i class="fas fa-file-export"></i>Export to CSV</span>
-    <span><i class="fas fa-user-slash"></i>No account needed</span>
-    <span><i class="fas fa-text-height"></i>Text Size</span>
-    <span><i class="fas fa-tablet-screen-button"></i>iPhone and iPad</span>
-    <span><i class="fas fa-book-open"></i>Ready for iPhone Duo</span>
+  <div class="sectionHead rv">
+    <span class="eyebrow">Everything else</span>
+    <h2 class="serif display">And so much more</h2>
   </div>
+  <ul class="moreGrid rv">
+    <li><i class="fas fa-lock" aria-hidden="true"></i>Lock Screen widgets</li>
+    <li><i class="fas fa-star" aria-hidden="true"></i>Favorites</li>
+    <li><i class="fas fa-microphone" aria-hidden="true"></i>Speak a quote</li>
+    <li><i class="fab fa-safari" aria-hidden="true"></i>Save from Safari</li>
+    <li><i class="fab fa-instagram" aria-hidden="true"></i>Instagram posts to quotes</li>
+    <li><i class="fas fa-tags" aria-hidden="true"></i>Your own fields</li>
+    <li><i class="fas fa-magnifying-glass" aria-hidden="true"></i>Spotlight and Siri</li>
+    <li><i class="fas fa-layer-group" aria-hidden="true"></i>Shortcuts</li>
+    <li><i class="fas fa-cloud" aria-hidden="true"></i>iCloud sync</li>
+    <li><i class="fas fa-file-export" aria-hidden="true"></i>Export to CSV</li>
+    <li><i class="fas fa-user-slash" aria-hidden="true"></i>No account needed</li>
+    <li><i class="fas fa-text-height" aria-hidden="true"></i>Text Size</li>
+    <li><i class="fas fa-tablet-screen-button" aria-hidden="true"></i>iPhone and iPad</li>
+    <li><i class="fas fa-book-open" aria-hidden="true"></i>Ready for iPhone Duo</li>
+  </ul>
 </section>
 
-<section class="close">
+<section class="close rv">
   <img class="icon" src="assets/2/appicon.png" width="512" height="512" alt="">
-  <h2 class="serif">Get Quotify</h2>
+  <h2 class="serif display">Get Quotify</h2>
   <p>Start your collection today. Your favorite words are waiting.</p>
   <a class="badge" href="https://apps.apple.com/app/id1626937020"><img src="assets/2/appstore.svg" width="120" height="40" alt="Download on the App Store"></a>
   <p class="fine">Free to download. Quotify Premium adds unlimited quotes, iCloud sync, daily reminders and more.</p>
 </section>
 
 <footer>
-  <p class="footerText">© 2026 <a href="https://finalbits.io">Final Bits</a></p>
-  <div class="footerLinks">
-    <a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Use</a><a href="mailto:quotify@finalbits.io">Support</a><a href="/press/">Press Kit</a>
+  <div class="footerLeft">
+    <a class="brand" href="/"><img src="assets/2/appicon.png" width="512" height="512" alt="">Quotify</a>
+    <p class="footerText">© 2026 <a href="https://finalbits.io">Final Bits</a></p>
   </div>
+  <nav class="footerLinks" aria-label="Footer">
+    <a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Use</a><a href="mailto:quotify@finalbits.io">Support</a><a href="/press/">Press Kit</a>
+  </nav>
 </footer>
-</div>
+</main>
+<script>
+(function(){
+  var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)');
+  // Nav: frosted bar once the page scrolls.
+  var bar=document.querySelector('.bar');
+  function onNav(){bar.classList.toggle('scrolled',window.scrollY>8);}
+  window.addEventListener('scroll',onNav,{passive:true});onNav();
+  // Reveal blocks as they enter the viewport.
+  var rv=[].slice.call(document.querySelectorAll('.rv'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    rv.forEach(function(el){io.observe(el);});
+  } else rv.forEach(function(el){el.classList.add('in');});
+  // Manifesto: words light up as the line scrolls through the viewport.
+  var big=document.querySelector('.manifesto .big');
+  if(!big) return;
+  if(rm&&rm.matches){big.classList.add('static');return;}
+  var words=[];
+  (function wrap(node){
+    [].slice.call(node.childNodes).forEach(function(n){
+      if(n.nodeType===3){
+        var frag=document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(function(t){
+          if(!t) return;
+          if(/^\s+$/.test(t)){frag.appendChild(document.createTextNode(t));return;}
+          var s=document.createElement('span');s.className='w';s.textContent=t;words.push(s);frag.appendChild(s);
+        });
+        node.replaceChild(frag,n);
+      } else if(n.nodeType===1) wrap(n);
+    });
+  })(big);
+  var tick=false;
+  function light(){
+    tick=false;
+    var r=big.getBoundingClientRect(), vh=window.innerHeight;
+    // 0 when the paragraph top hits 85% of the viewport, 1 when its bottom reaches 45%.
+    var p=(vh*.85-r.top)/((vh*.85)-(vh*.45)+r.height);
+    var n=Math.round(Math.max(0,Math.min(1,p))*words.length);
+    words.forEach(function(w,i){w.classList.toggle('on',i<n);});
+  }
+  window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(light);}},{passive:true});
+  window.addEventListener('resize',light);light();
+})();
+</script>
 </body>
 </html>

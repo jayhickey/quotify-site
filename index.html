@@ -82,7 +82,7 @@ a{color:var(--accentText);text-decoration:none}
 .bar.scrolled{background:var(--navBg);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom-color:var(--line)}
 .bar .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
 .brand{display:flex;align-items:center;gap:11px;color:var(--text);font-weight:700;font-size:1.85rem;letter-spacing:-.01em;white-space:nowrap}
-.brand img{width:32px;height:32px;border-radius:8px;box-shadow:0 0 0 .5px var(--line2)}
+.brand img{width:32px;height:32px;border-radius:22.5%}
 .bar nav{display:flex;align-items:center;gap:28px;white-space:nowrap}
 .bar nav a.plain{color:var(--text2);font-size:1.5rem;font-weight:500;transition:color .2s}
 .bar nav a.plain:hover{color:var(--text)}
@@ -92,7 +92,7 @@ a{color:var(--accentText);text-decoration:none}
 /* Hero */
 .hero{position:relative;text-align:center;padding:64px 0 0}
 .hero::before{content:"";position:absolute;left:50%;top:-140px;width:min(1100px,100vw);height:900px;transform:translateX(-50%);background:radial-gradient(closest-side at 38% 60%,var(--glowA),transparent),radial-gradient(closest-side at 64% 46%,var(--glowB),transparent);filter:blur(30px);pointer-events:none;z-index:-1}
-.hero .icon{width:96px;height:96px;border-radius:22px;margin:0 auto;box-shadow:0 18px 50px -10px rgba(10,132,255,.45),0 0 0 .5px var(--line2)}
+.hero .icon{width:128px;height:128px;border-radius:22.5%;margin:0 auto;box-shadow:0 22px 60px -14px rgba(10,132,255,.5)}
 .hero h1{font-size:9.6rem;margin:30px auto 0;max-width:980px}
 .hero .lede{color:var(--text2);font-size:2.2rem;line-height:1.5;margin:26px auto 0;max-width:620px;text-wrap:pretty}
 .hero .cta{margin-top:36px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
@@ -117,20 +117,19 @@ a{color:var(--accentText);text-decoration:none}
 .phone img{width:100%;aspect-ratio:1320/2868;border-radius:12.5%/5.75%}
 
 /* Meet Quotify 2 */
-.meet{position:relative;display:grid;grid-template-columns:5fr 7fr;gap:56px;align-items:center;background:var(--newBg);border:1px solid var(--line);border-radius:40px;padding:64px;overflow:hidden}
-.meet h2{font-size:5.6rem;margin-top:14px}
-.meet .intro p{color:var(--text2);font-size:2rem;margin-top:16px;max-width:420px;text-wrap:pretty}
-.meetTiles{display:flex;flex-direction:column;gap:12px}
-.meetTiles a{display:grid;grid-template-columns:48px 1fr 20px;gap:18px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px 22px;color:var(--text);transition:transform .25s ease,border-color .25s,box-shadow .25s}
-.meetTiles a:hover{transform:translateY(-2px);border-color:var(--line2);box-shadow:0 18px 40px -20px rgba(0,0,0,.5)}
-.meetTiles i.ic{width:48px;height:48px;border-radius:14px;background:linear-gradient(160deg,#3b9bff,#0a6ae0);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.9rem;box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
-.meetTiles b{display:block;font-size:1.85rem;line-height:1.25;font-weight:650}
-.meetTiles small{display:block;color:var(--text2);font-size:1.55rem;line-height:1.4;margin-top:3px}
-.meetTiles .go{color:var(--text3);font-size:1.4rem;transition:transform .2s,color .2s}
-.meetTiles a:hover .go{transform:translateX(3px);color:var(--text)}
+.meet{position:relative;padding:160px 0 0}
+.meet .sectionHead h2{font-size:7.2rem}
+.meetIndex{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:36px}
+.meetIndex a{display:inline-flex;align-items:center;gap:10px;padding:10px 18px 10px 12px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--text);font-size:1.55rem;font-weight:600;transition:border-color .2s,transform .2s}
+.meetIndex a:hover{border-color:var(--line2);transform:translateY(-1px)}
+.meetIndex .n{font-size:1.2rem;font-weight:700;color:var(--text3);font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.meetIndex i{width:28px;height:28px;border-radius:8px;background:linear-gradient(160deg,#3b9bff,#0a6ae0);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:1.2rem}
+.meet + .chapters{margin-top:100px}
+.everyday{padding-top:180px}
+.everyday .chapters{margin-top:90px}
 
 /* AI band */
-.mcpBand{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:20px;padding:56px 64px;border-radius:40px;background:var(--bg2);border:1px solid var(--line)}
+.mcpBand{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:180px;padding:56px 64px;border-radius:40px;background:var(--bg2);border:1px solid var(--line)}
 .mcpBand h2{font-size:4.4rem;margin-top:14px}
 .mcpBand p{color:var(--text2);font-size:1.8rem;line-height:1.55;margin-top:14px;max-width:470px}
 .aiApps{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;list-style:none}
@@ -141,13 +140,13 @@ a{color:var(--accentText);text-decoration:none}
 .chat .me{align-self:flex-end;background:var(--accent);color:#fff;border-bottom-right-radius:6px}
 .chat .ai{align-self:flex-start;background:var(--card2);color:var(--text);border-bottom-left-radius:6px}
 .chat .tool{display:inline-flex;align-items:center;gap:7px;font-size:1.25rem;font-weight:600;color:var(--text3);margin-bottom:8px}
-.chat .tool img{width:18px;height:18px;border-radius:5px}
+.chat .tool img{width:18px;height:18px;border-radius:22.5%}
 .chat blockquote{background:var(--paper);color:var(--paperInk);border-radius:14px;padding:14px 16px;font-size:1.9rem;line-height:1.3}
 .chat blockquote::before{content:"\201C";color:#e07a2b;font-weight:700;margin-right:3px}
 .chat blockquote cite{display:block;font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-style:normal;font-size:1.1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--paperMute);margin-top:8px}
 
 /* Manifesto */
-.manifesto{text-align:center;padding:180px 0 40px}
+.manifesto{text-align:center;padding:170px 0 0}
 .manifesto p.big{font-size:6rem;line-height:1.14;font-weight:500;letter-spacing:-.02em;max-width:1000px;margin:0 auto;text-wrap:balance}
 .manifesto p.big em{font-style:italic;color:var(--ember)}
 .manifesto p.small{color:var(--text2);font-size:2.2rem;max-width:600px;margin:30px auto 0;text-wrap:pretty}
@@ -171,6 +170,8 @@ html.js .manifesto .w.on{opacity:1}
 .g-teal{background:linear-gradient(165deg,#2d5f8f 0%,#163352 55%,#0c1b2d 100%)}
 .g-green{background:linear-gradient(165deg,#5b7a54 0%,#2c3f29 60%,#182316 100%)}
 .g-orange{background:linear-gradient(165deg,#e07f34 0%,#9c4511 60%,#5e2507 100%)}
+.g-sand{background:linear-gradient(165deg,#9a7a3e 0%,#4d3a1a 60%,#2a1f0e 100%)}
+.panel.tall.designShot .phone{position:absolute;left:50%;top:70px;width:360px;transform:translateX(-50%) rotate(-3deg)}
 .g-purple{background:linear-gradient(165deg,#6e4a86 0%,#3b2650 60%,#1f1430 100%)}
 .homeCrop,.phRot{width:270px}
 .phCard{width:220px}
@@ -190,7 +191,7 @@ html.js .manifesto .w.on{opacity:1}
 .chips span{display:inline-flex;align-items:center;gap:8px;padding:8px 15px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.16);color:#fff;font-size:1.4rem;font-weight:600;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 
 /* Feature cards */
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:160px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:140px}
 .fcard .panel{height:540px;border-radius:32px}
 .fcard .panel .phone{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
 .fcard:hover .panel .phone{transform:translate(-50%,-52%)}
@@ -227,15 +228,14 @@ html.js .manifesto .w.on{opacity:1}
 .wq.blue span{color:#fff}
 
 /* More */
-.more{padding:180px 0 0}
+.more{padding:160px 0 0}
 .moreGrid{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:56px auto 0;list-style:none}
 .moreGrid li{flex:0 0 calc((100% - 36px)/4);display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:20px;background:var(--card);border:1px solid var(--line);font-size:1.65rem;font-weight:600;line-height:1.3}
 .moreGrid i{flex:0 0 38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:var(--emberSoft);color:var(--ember);font-size:1.6rem}
 
 /* Close */
 .close{position:relative;margin:180px 0 0;padding:100px 30px 90px;text-align:center;border-radius:48px;background:var(--newBg);border:1px solid var(--line);overflow:hidden;isolation:isolate}
-.close::before{content:"\201C";position:absolute;left:50%;top:-80px;transform:translateX(-50%);font-family:ui-serif,"New York","Iowan Old Style",Georgia,serif;font-size:56rem;line-height:1;color:var(--ember);opacity:.07;z-index:-1;pointer-events:none}
-.close .icon{width:112px;height:112px;border-radius:26px;margin:0 auto;box-shadow:0 24px 60px -12px rgba(10,132,255,.55),0 0 0 .5px var(--line2)}
+.close .icon{width:148px;height:148px;border-radius:22.5%;margin:0 auto;box-shadow:0 26px 70px -14px rgba(10,132,255,.55)}
 .close h2{font-size:8rem;margin-top:32px}
 .close p{color:var(--text2);font-size:2.2rem;margin:16px auto 0;max-width:560px}
 .close .badge{margin-top:36px}
@@ -244,7 +244,7 @@ html.js .manifesto .w.on{opacity:1}
 /* Footer */
 footer{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:48px 0 56px;margin-top:40px}
 footer .brand{font-size:1.6rem}
-footer .brand img{width:26px;height:26px;border-radius:6px}
+footer .brand img{width:26px;height:26px;border-radius:22.5%}
 .footerText{color:var(--text3);font-size:1.4rem;margin-left:12px;font-weight:400}
 .footerText a{color:var(--text3)}
 .footerLeft{display:flex;align-items:center}
@@ -265,11 +265,11 @@ footer .brand img{width:26px;height:26px;border-radius:6px}
   .heroArt .p2,.heroArt .p3{width:230px;top:76px}
   .heroArt .p2{margin-left:-370px}
   .heroArt .p3{margin-left:140px}
-  .meet{grid-template-columns:1fr;gap:36px;padding:52px}
   .mcpBand{grid-template-columns:1fr;gap:36px;padding:52px}
   .chapter{gap:48px}
   .chapter h3{font-size:4.4rem}
-  .meet h2,.sectionHead h2{font-size:5rem}
+  .sectionHead h2{font-size:5rem}
+  .meet .sectionHead h2{font-size:6rem}
   .manifesto p.big{font-size:4.8rem}
   .wq p{font-size:2.3rem}
   .wq.t2 p{font-size:2.7rem}
@@ -282,13 +282,13 @@ footer .brand img{width:26px;height:26px;border-radius:6px}
   .wrap{padding:0 18px}
   .bar .wrap{height:58px}
   .brand{font-size:1.7rem}
-  .brand img{width:28px;height:28px;border-radius:7px}
+  .brand img{width:28px;height:28px}
   .bar nav{gap:18px}
   .bar nav a.plain{font-size:1.4rem}
   .bar nav a.get{font-size:1.35rem;padding:7px 14px}
   .hero{padding-top:36px}
   .hero::before{top:-100px;height:700px}
-  .hero .icon{width:76px;height:76px;border-radius:18px}
+  .hero .icon{width:100px;height:100px}
   .hero h1{font-size:5.4rem;line-height:1.02;margin-top:22px}
   .hero .lede{font-size:1.85rem;margin-top:18px}
   .hero .cta{margin-top:28px;flex-direction:column;gap:12px}
@@ -301,14 +301,15 @@ footer .brand img{width:26px;height:26px;border-radius:6px}
   .heroArt .p2{margin-left:max(-63%,-345px)}
   .heroArt .p3{margin-left:min(19%,125px)}
   .eyebrow{font-size:1.2rem}
-  .meet{border-radius:30px;padding:36px 20px 20px;gap:26px;text-align:center}
-  .meet .intro p{margin-left:auto;margin-right:auto;font-size:1.8rem}
-  .meet h2{font-size:4.2rem}
-  .meetTiles a{grid-template-columns:42px 1fr 14px;gap:14px;padding:16px;border-radius:18px;text-align:left}
-  .meetTiles i.ic{width:42px;height:42px;border-radius:12px;font-size:1.7rem}
-  .meetTiles b{font-size:1.7rem}
-  .meetTiles small{font-size:1.45rem}
-  .mcpBand{padding:36px 20px 20px;border-radius:30px;gap:28px;margin-top:14px;text-align:center}
+  .meet{padding-top:110px}
+  .meet .sectionHead h2{font-size:4.6rem}
+  .meetIndex{flex-direction:column;align-items:stretch;gap:8px;margin-top:26px}
+  .meetIndex a{font-size:1.5rem}
+  .meet + .chapters{margin-top:64px}
+  .everyday{padding-top:120px}
+  .everyday .chapters{margin-top:48px}
+  .panel.tall.designShot .phone{width:290px;top:50px}
+  .mcpBand{padding:36px 20px 20px;border-radius:30px;gap:28px;margin-top:120px;text-align:center}
   .mcpBand p{margin-left:auto;margin-right:auto}
   .aiApps{justify-content:center}
   .chat{text-align:left}
@@ -355,8 +356,7 @@ footer .brand img{width:26px;height:26px;border-radius:6px}
   .moreGrid li{flex-basis:calc((100% - 8px)/2);gap:10px;padding:12px;border-radius:16px;font-size:1.4rem}
   .moreGrid i{flex-basis:32px;height:32px;border-radius:9px;font-size:1.35rem}
   .close{margin-top:120px;padding:64px 20px 52px;border-radius:32px}
-  .close::before{font-size:36rem;top:-50px}
-  .close .icon{width:88px;height:88px;border-radius:20px}
+  .close .icon{width:116px;height:116px}
   .close h2{font-size:5.2rem;margin-top:24px}
   .close p{font-size:1.85rem}
   footer{flex-direction:column;gap:18px;padding:40px 0 44px;margin-top:20px;text-align:center}
@@ -395,7 +395,7 @@ footer .brand img{width:26px;height:26px;border-radius:6px}
 <body>
 <header class="bar">
   <div class="wrap">
-    <a class="brand" href="/"><img src="assets/2/appicon.png" width="512" height="512" alt="">Quotify</a>
+    <a class="brand" href="/"><img src="assets/2/appicon-full.jpg" width="512" height="512" alt="">Quotify</a>
     <nav>
       <a class="plain" href="https://mcp.quotify.to/">Use with AI</a>
       <a class="plain navPress" href="/press/">Press Kit</a>
@@ -406,7 +406,7 @@ footer .brand img{width:26px;height:26px;border-radius:6px}
 <main class="wrap">
 
 <section class="hero">
-  <img class="icon" src="assets/2/appicon.png" width="512" height="512" alt="Quotify app icon">
+  <img class="icon" src="assets/2/appicon-full.jpg" width="512" height="512" alt="Quotify app icon">
   <h1 class="serif display">Keep the words <em>that move you.</em></h1>
   <p class="lede">Save quotes from books, articles, podcasts and conversations in seconds. Then see them again every day on your Home Screen and Lock Screen.</p>
   <div class="cta">
@@ -478,39 +478,22 @@ footer .brand img{width:26px;height:26px;border-radius:6px}
 </script>
 </section>
 
-<section class="meet rv" id="new">
-  <div class="intro">
+<section class="manifesto">
+  <p class="big serif">The line you underlined. The one from the podcast. The post you scrolled past. <em>The screenshot you'll never find again.</em></p>
+  <p class="small rv">Quotify keeps them all in one beautiful place, and brings them back when you need them most.</p>
+</section>
+
+<section class="meet" id="new">
+  <div class="sectionHead rv">
     <span class="eyebrow">New</span>
     <h2 class="serif display">Meet Quotify&nbsp;2</h2>
     <p>A fresh new design, quotes from any photo, and new ways to choose which quotes you see each day.</p>
   </div>
-  <div class="meetTiles">
-    <a href="#photo"><i class="ic fas fa-camera" aria-hidden="true"></i><span><b>Smart Photo to Quote</b><small>Take or choose a photo and get the quote and author.</small></span><i class="go fas fa-arrow-right" aria-hidden="true"></i></a>
-    <a href="#design"><i class="ic fas fa-wand-magic-sparkles" aria-hidden="true"></i><span><b>A fresh new design</b><small>Cleaner quote rows and Liquid Glass controls.</small></span><i class="go fas fa-arrow-right" aria-hidden="true"></i></a>
-    <a href="#favorites"><i class="ic fas fa-star" aria-hidden="true"></i><span><b>Choose which quotes show</b><small>Just your Favorites, or any field you've added.</small></span><i class="go fas fa-arrow-right" aria-hidden="true"></i></a>
-  </div>
-</section>
-
-<section id="ai-apps" class="mcpBand rv" aria-labelledby="mcpBandTitle">
-  <div class="mcpText">
-    <span class="eyebrow">Connect your AI</span>
-    <h2 id="mcpBandTitle" class="serif display">Your quotes, in your AI&nbsp;chats.</h2>
-    <p>Find saved quotes or, with your permission, save new ones. Works with:</p>
-    <ul class="aiApps"><li>Claude</li><li>Claude Code</li><li>Codex</li><li>ChatGPT</li><li>Cursor</li><li>Grok Bot</li><li>Muse</li></ul>
-    <a class="btn ghost" href="https://mcp.quotify.to/">Connect your AI <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-  </div>
-  <div class="chat" aria-hidden="true">
-    <div class="msg me">Find that Seneca quote I saved about worry.</div>
-    <div class="msg ai">
-      <span class="tool"><img src="assets/2/appicon.png" width="512" height="512" alt="">Searched Quotify</span>
-      <blockquote class="serif">We suffer more often in imagination than in reality.<cite>Seneca</cite></blockquote>
-    </div>
-  </div>
-</section>
-
-<section class="manifesto" id="design">
-  <p class="big serif">The line you underlined. The one from the podcast. <em>The screenshot you'll never find again.</em></p>
-  <p class="small rv">Quotify keeps them all in one beautiful place, and brings them back when you need them most.</p>
+  <nav class="meetIndex rv" aria-label="What's new in Quotify 2">
+    <a href="#photo"><span class="n">01</span><i class="fas fa-camera" aria-hidden="true"></i>Smart Photo to Quote</a>
+    <a href="#design"><span class="n">02</span><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i>A fresh new design</a>
+    <a href="#favorites"><span class="n">03</span><i class="fas fa-star" aria-hidden="true"></i>Choose which quotes show</a>
+  </nav>
 </section>
 
 <div class="chapters">
@@ -537,28 +520,48 @@ footer .brand img{width:26px;height:26px;border-radius:6px}
     </div>
   </div>
 
-  <div class="chapter flip">
-    <div class="panel tall g-taupe rv">
-      <div class="phone homeCrop"><picture><source srcset="assets/2/screen-home-notif-660w.webp 660w, assets/2/screen-home-notif.webp 1320w" type="image/webp" sizes="(max-width:768px) 230px, 270px"><img src="assets/2/screen-home-notif.jpg" srcset="assets/2/screen-home-notif-660w.jpg 660w, assets/2/screen-home-notif.jpg 1320w" sizes="(max-width:768px) 230px, 270px" width="1320" height="2868" alt="A Daily Quote notification above Quotify widgets" loading="lazy" decoding="async"></picture></div>
+  <div class="chapter flip" id="design">
+    <div class="panel tall g-teal designShot rv">
+      <div class="phone"><picture><source srcset="assets/2/screen-library-660w.webp 660w, assets/2/screen-library.webp 1320w" type="image/webp" sizes="(max-width:768px) 290px, 360px"><img src="assets/2/screen-library.jpg" srcset="assets/2/screen-library-660w.jpg 660w, assets/2/screen-library.jpg 1320w" sizes="(max-width:768px) 290px, 360px" width="1320" height="2868" alt="The redesigned Quotify library with cleaner quote rows" loading="lazy" decoding="async"></picture></div>
     </div>
     <div class="text rv">
-      <span class="eyebrow"><span class="num">02</span>Widgets and reminders</span>
-      <h3 class="serif">A quote a day, right where you look.</h3>
-      <p class="body">Home Screen and Lock Screen widgets show quotes from your own library and update the moment you add one. Daily reminders bring a quote to you, even on days you forget to look.</p>
+      <span class="eyebrow"><span class="num">02</span>A fresh new design</span>
+      <h3 class="serif">Cleaner rows. Liquid Glass.</h3>
+      <p class="body">Quotify 2 is redesigned with cleaner quote rows and Liquid Glass controls. Tap a quote to share it, or swipe and long-press for quick actions.</p>
     </div>
   </div>
 
   <div class="chapter" id="favorites">
-    <div class="panel tall g-teal rv">
+    <div class="panel tall g-sand rv">
       <div class="phone phRot"><picture><source srcset="assets/2/screen-rotation-660w.webp 660w, assets/2/screen-rotation.webp 1320w" type="image/webp" sizes="(max-width:768px) 230px, 270px"><img src="assets/2/screen-rotation.jpg" srcset="assets/2/screen-rotation-660w.jpg 660w, assets/2/screen-rotation.jpg 1320w" sizes="(max-width:768px) 230px, 270px" width="1320" height="2868" alt="Choosing Favorites as the quotes to show, with a live widget preview" loading="lazy" decoding="async"></picture></div>
     </div>
     <div class="text rv">
-      <span class="eyebrow"><span class="num">03</span>Quotes to show</span>
+      <span class="eyebrow"><span class="num">03</span>Choose which quotes show</span>
       <h3 class="serif">Your favorites, on repeat.</h3>
       <p class="body">Choose which quotes rotate through your widgets and reminders: everything, just your Favorites, or a single author. The widget preview updates as you pick.</p>
     </div>
   </div>
 </div>
+
+<section class="everyday">
+  <div class="sectionHead rv">
+    <span class="eyebrow">Every day</span>
+    <h2 class="serif display">Saved once. Seen every&nbsp;day.</h2>
+  </div>
+  <div class="chapters">
+  <div class="chapter flip" id="widgets">
+    <div class="panel tall g-taupe rv">
+      <div class="phone homeCrop"><picture><source srcset="assets/2/screen-home-notif-660w.webp 660w, assets/2/screen-home-notif.webp 1320w" type="image/webp" sizes="(max-width:768px) 230px, 270px"><img src="assets/2/screen-home-notif.jpg" srcset="assets/2/screen-home-notif-660w.jpg 660w, assets/2/screen-home-notif.jpg 1320w" sizes="(max-width:768px) 230px, 270px" width="1320" height="2868" alt="A Daily Quote notification above Quotify widgets" loading="lazy" decoding="async"></picture></div>
+    </div>
+    <div class="text rv">
+      <span class="eyebrow">Widgets and reminders</span>
+      <h3 class="serif">A quote a day, right where you look.</h3>
+      <p class="body">Home Screen and Lock Screen widgets show quotes from your own library and update the moment you add one. Daily reminders bring a quote to you, even on days you forget to look.</p>
+    </div>
+  </div>
+
+  </div>
+</section>
 
 <div class="cards">
   <div class="fcard rv">
@@ -597,6 +600,23 @@ footer .brand img{width:26px;height:26px;border-radius:6px}
   </div>
 </section>
 
+<section id="ai-apps" class="mcpBand rv" aria-labelledby="mcpBandTitle">
+  <div class="mcpText">
+    <span class="eyebrow">Connect your AI</span>
+    <h2 id="mcpBandTitle" class="serif display">Your quotes, in your AI&nbsp;chats.</h2>
+    <p>Find saved quotes or, with your permission, save new ones. Works with:</p>
+    <ul class="aiApps"><li>Claude</li><li>Claude Code</li><li>Codex</li><li>ChatGPT</li><li>Cursor</li><li>Grok Bot</li><li>Muse</li></ul>
+    <a class="btn ghost" href="https://mcp.quotify.to/">Connect your AI <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+  </div>
+  <div class="chat" aria-hidden="true">
+    <div class="msg me">Find that Seneca quote I saved about worry.</div>
+    <div class="msg ai">
+      <span class="tool"><img src="assets/2/appicon-full.jpg" width="512" height="512" alt="">Searched Quotify</span>
+      <blockquote class="serif">We suffer more often in imagination than in reality.<cite>Seneca</cite></blockquote>
+    </div>
+  </div>
+</section>
+
 <section class="more">
   <div class="sectionHead rv">
     <span class="eyebrow">Everything else</span>
@@ -621,7 +641,7 @@ footer .brand img{width:26px;height:26px;border-radius:6px}
 </section>
 
 <section class="close rv">
-  <img class="icon" src="assets/2/appicon.png" width="512" height="512" alt="">
+  <img class="icon" src="assets/2/appicon-full.jpg" width="512" height="512" alt="">
   <h2 class="serif display">Get Quotify</h2>
   <p>Start your collection today. Your favorite words are waiting.</p>
   <a class="badge" href="https://apps.apple.com/app/id1626937020"><img src="assets/2/appstore.svg" width="120" height="40" alt="Download on the App Store"></a>
@@ -630,7 +650,7 @@ footer .brand img{width:26px;height:26px;border-radius:6px}
 
 <footer>
   <div class="footerLeft">
-    <a class="brand" href="/"><img src="assets/2/appicon.png" width="512" height="512" alt="">Quotify</a>
+    <a class="brand" href="/"><img src="assets/2/appicon-full.jpg" width="512" height="512" alt="">Quotify</a>
     <p class="footerText">© 2026 <a href="https://finalbits.io">Final Bits</a></p>
   </div>
   <nav class="footerLinks" aria-label="Footer">

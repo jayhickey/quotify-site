@@ -1,0 +1,145 @@
+/* Shared styles for Quotify subpages (Privacy, Terms, Press Kit). Tokens mirror the homepage. */
+:root{
+  --bg:#0c0b0a; --bg2:#13110f; --text:#f6f2eb; --text2:#b4aea4; --text3:#7f786e;
+  --card:#181614; --card2:#221f1c; --line:rgba(255,240,220,.09); --line2:rgba(255,240,220,.16);
+  --accent:#0a84ff; --accentText:#4aa3ff; --ember:#f08c3e; --emberSoft:rgba(240,140,62,.16);
+  --navBg:rgba(12,11,10,.72);
+  --glowA:rgba(240,140,62,.16); --glowB:rgba(10,132,255,.14);
+}
+@media (prefers-color-scheme: light){
+  :root{
+    --bg:#faf7f1; --bg2:#f3eee5; --text:#1c1814; --text2:#5a534a; --text3:#8d857a;
+    --card:#fffdf9; --card2:#f1ebe0; --line:rgba(60,40,15,.11); --line2:rgba(60,40,15,.2);
+    --accent:#0071e3; --accentText:#0066cc; --ember:#c9621a; --emberSoft:rgba(201,98,26,.12);
+    --navBg:rgba(250,247,241,.78);
+    --glowA:rgba(240,140,62,.16); --glowB:rgba(10,132,255,.10);
+  }
+}
+html{font-size:62.5%;scroll-padding-top:84px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip}
+img{max-width:100%;height:auto;display:block}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:1.8rem;line-height:1.65;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+a{color:var(--accentText);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+::selection{background:var(--ember);color:#fff}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.serif,.doc h1,.doc h2{font-family:ui-serif,"New York","Iowan Old Style","Apple Garamond",Charter,Georgia,serif}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+
+/* Nav */
+.bar{position:sticky;top:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.bar.scrolled{background:var(--navBg);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom-color:var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.brand{display:flex;align-items:center;gap:11px;color:var(--text);font-weight:700;font-size:1.85rem;letter-spacing:-.01em;white-space:nowrap}
+.brand:hover{text-decoration:none}
+.brand img{width:32px;height:32px;border-radius:8px;box-shadow:0 0 0 .5px var(--line2)}
+.bar nav{display:flex;align-items:center;gap:28px;white-space:nowrap}
+.bar nav a.plain{color:var(--text2);font-size:1.5rem;font-weight:500;transition:color .2s}
+.bar nav a.plain:hover,.bar nav a.plain[aria-current="page"]{color:var(--text);text-decoration:none}
+.bar nav a.get{background:var(--text);color:var(--bg);font-weight:600;font-size:1.4rem;padding:8px 16px;border-radius:999px;transition:opacity .2s}
+.bar nav a.get:hover{opacity:.85;text-decoration:none}
+
+/* Page header */
+.pageHead{position:relative;padding:88px 0 56px;max-width:760px;margin:0 auto}
+.pageHead::before{content:"";position:absolute;left:50%;top:-180px;width:min(900px,100vw);height:600px;transform:translateX(-50%);background:radial-gradient(closest-side at 36% 55%,var(--glowA),transparent),radial-gradient(closest-side at 66% 45%,var(--glowB),transparent);filter:blur(30px);pointer-events:none;z-index:-1}
+.eyebrow{display:inline-block;color:var(--ember);font-size:1.3rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.pageHead h1{font-family:ui-serif,"New York","Iowan Old Style","Apple Garamond",Charter,Georgia,serif;font-size:7.2rem;font-weight:500;letter-spacing:-.025em;line-height:1.02;margin-top:14px;text-wrap:balance}
+.pageHead h1 em{font-style:italic;color:var(--ember)}
+.pageHead .lede{color:var(--text2);font-size:2.1rem;line-height:1.55;margin-top:20px;text-wrap:pretty}
+.pageHead .lede strong{color:var(--text);font-weight:600}
+
+/* Long-form document */
+.doc{max-width:760px;margin:0 auto;padding-bottom:40px;color:var(--text2)}
+.doc>*+*{margin-top:18px}
+.doc h2{color:var(--text);font-size:3.4rem;font-weight:500;letter-spacing:-.015em;line-height:1.15;margin-top:64px;padding-top:28px;border-top:1px solid var(--line);text-wrap:balance}
+.doc h3{color:var(--text);font-size:2rem;font-weight:650;line-height:1.3;margin-top:36px}
+.doc h2+*,.doc h3+*{margin-top:12px}
+.doc strong{color:var(--text);font-weight:600}
+.doc ul{padding-left:0;list-style:none}
+.doc ul li{position:relative;padding-left:26px}
+.doc ul li+li{margin-top:10px}
+.doc ul li::before{content:"";position:absolute;left:4px;top:.72em;width:7px;height:7px;border-radius:50%;background:var(--ember)}
+.doc .caps{font-size:1.5rem;line-height:1.7;letter-spacing:.01em}
+.doc .meta{font-size:1.5rem;color:var(--text3)}
+.toc{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin-top:28px}
+.toc a{display:inline-block;font-size:1.4rem;font-weight:600;color:var(--text2);padding:6px 13px;border-radius:999px;background:var(--card);border:1px solid var(--line)}
+.toc a:hover{color:var(--text);border-color:var(--line2);text-decoration:none}
+
+/* Press kit */
+.pressButtons{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:12px 20px;border-radius:999px;font-size:1.55rem;font-weight:600;line-height:1.2;white-space:nowrap;transition:opacity .2s,border-color .2s,background .2s}
+.btn:hover{text-decoration:none}
+.btn.solid{background:var(--text);color:var(--bg)}
+.btn.solid:hover{opacity:.85}
+.btn.ghost{color:var(--text);border:1px solid var(--line2)}
+.btn.ghost:hover{border-color:var(--text3);background:var(--card)}
+.facts{width:100%;border-collapse:separate;border-spacing:0;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;font-size:1.65rem;line-height:1.5}
+.facts th,.facts td{text-align:left;vertical-align:top;padding:15px 22px;border-top:1px solid var(--line)}
+.facts tr:first-child th,.facts tr:first-child td{border-top:0}
+.facts th{width:30%;color:var(--text3);font-weight:600;font-size:1.3rem;letter-spacing:.08em;text-transform:uppercase;padding-top:18px}
+.facts td{color:var(--text)}
+.wide{max-width:1100px;margin-left:auto;margin-right:auto}
+.pressSection{margin-top:72px;padding-top:28px;border-top:1px solid var(--line)}
+.pressSection>h2{font-family:ui-serif,"New York","Iowan Old Style","Apple Garamond",Charter,Georgia,serif;font-size:3.4rem;font-weight:500;letter-spacing:-.015em;line-height:1.15}
+.pressSection>p{color:var(--text2);margin-top:10px}
+.pressSub{font-size:1.3rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin:34px 0 14px}
+.pressAssets{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;margin-top:22px}
+.pressAssets.pressUi{grid-template-columns:repeat(5,1fr)}
+.pressAssets.pressIconGrid{grid-template-columns:repeat(6,1fr)}
+.pressAssets figure{margin:0;font-size:1.35rem;line-height:1.4;color:var(--text2)}
+.pressAssets a{display:block;border-radius:18px;overflow:hidden;background:var(--card);border:1px solid var(--line);transition:transform .25s ease,border-color .25s,box-shadow .25s}
+.pressAssets a:hover{transform:translateY(-3px);border-color:var(--line2);box-shadow:0 20px 40px -20px rgba(0,0,0,.5)}
+.pressAssets img{width:100%}
+.pressAssets figcaption{margin-top:10px}
+.pressAssets .iconLink{border:0;background:none;border-radius:22.5%;box-shadow:0 12px 30px -10px rgba(10,132,255,.45),0 0 0 .5px var(--line2)}
+.pressShotsIpad{grid-template-columns:repeat(3,1fr)}
+
+/* Footer */
+footer{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:48px 0 56px;margin-top:96px;border-top:1px solid var(--line)}
+footer .brand{font-size:1.6rem}
+footer .brand img{width:26px;height:26px;border-radius:6px}
+.footerLeft{display:flex;align-items:center}
+.footerText{color:var(--text3);font-size:1.4rem;margin-left:12px}
+.footerText a{color:var(--text3)}
+.footerLinks{display:flex;flex-wrap:wrap;gap:10px 26px;font-size:1.4rem}
+.footerLinks a{color:var(--text3);transition:color .2s}
+.footerText a:hover,.footerLinks a:hover,.footerLinks a[aria-current="page"]{color:var(--text);text-decoration:none}
+
+@media (max-width: 1000px){
+  .pressAssets{grid-template-columns:repeat(3,1fr)}
+  .pressAssets.pressUi{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width: 768px){
+  html{scroll-padding-top:64px}
+  body{font-size:1.7rem}
+  .wrap{padding:0 18px}
+  .bar .wrap{height:58px}
+  .brand{font-size:1.7rem}
+  .brand img{width:28px;height:28px;border-radius:7px}
+  .bar nav{gap:18px}
+  .bar nav a.plain{font-size:1.4rem}
+  .bar nav a.get{font-size:1.35rem;padding:7px 14px}
+  .pageHead{padding:52px 0 36px}
+  .pageHead h1{font-size:4.8rem}
+  .pageHead .lede{font-size:1.85rem}
+  .doc h2,.pressSection>h2{font-size:2.8rem}
+  .doc h2{margin-top:48px;padding-top:22px}
+  .pressSection{margin-top:52px}
+  .toc{gap:6px;margin-top:22px}
+  .toc a{font-size:1.25rem;padding:5px 11px}
+  .facts{font-size:1.5rem;border-radius:18px}
+  .facts th,.facts td{display:block;width:auto;padding:0 18px}
+  .facts th{padding-top:16px}
+  .facts td{padding-bottom:16px;padding-top:4px;border-top:0}
+  .pressAssets,.pressAssets.pressUi{grid-template-columns:repeat(2,1fr);gap:14px}
+  .pressAssets.pressIconGrid{grid-template-columns:repeat(3,1fr)}
+  .pressShotsIpad{grid-template-columns:repeat(2,1fr)}
+  footer{flex-direction:column;gap:18px;padding:40px 0 44px;margin-top:64px;text-align:center}
+  .footerLeft{flex-direction:column;gap:8px}
+  .footerText{margin-left:0}
+  .footerLinks{justify-content:center;gap:10px 20px}
+}
+@media (max-width: 430px){
+  .bar nav a.navPress{display:none}
+}

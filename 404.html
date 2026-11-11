@@ -13,11 +13,11 @@
 <link rel="apple-touch-icon" href="/assets/2/appicon.png">
 <style>
 :root{
-  --bg:#000; --text:#fff; --text2:#a1a1a6; --accent2:#0a84ff;
+  --bg:#0c0b0a; --text:#f6f2eb; --text2:#b4aea4; --ember:#f08c3e;
 }
 @media (prefers-color-scheme: light){
   :root{
-    --bg:#fff; --text:#1d1d1f; --text2:#515154; --accent2:#0071e3;
+    --bg:#faf7f1; --text:#1c1814; --text2:#5a534a; --ember:#c9621a;
   }
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -34,15 +34,16 @@ body{
 }
 main{max-width:520px}
 img{width:72px;height:72px;border-radius:18px;margin:0 auto 22px;display:block}
-h1{font-family:ui-serif,"Iowan Old Style",Charter,Georgia,serif;font-size:4.4rem;line-height:1.05;font-weight:900;letter-spacing:-.02em}
+h1{font-family:ui-serif,"New York","Iowan Old Style",Charter,Georgia,serif;font-size:4.8rem;line-height:1.05;font-weight:500;letter-spacing:-.025em}
+h1 em{font-style:italic;color:var(--ember)}
 p{color:var(--text2);font-size:1.8rem;line-height:1.5;margin-top:14px}
-a{display:inline-block;margin-top:28px;background:var(--accent2);color:#fff;font-weight:600;font-size:1.6rem;padding:10px 22px;border-radius:999px;text-decoration:none}
+a{display:inline-block;margin-top:28px;background:var(--text);color:var(--bg);font-weight:600;font-size:1.6rem;padding:10px 22px;border-radius:999px;text-decoration:none}
 </style>
 </head>
 <body>
 <main>
   <img src="/assets/2/appicon.png" width="512" height="512" alt="">
-  <h1>Page not found</h1>
+  <h1>Page <em>not found</em></h1>
   <p>That page isn’t on Quotify.</p>
   <a href="/">Back to Quotify</a>
 </main>

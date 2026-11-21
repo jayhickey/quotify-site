@@ -10,7 +10,7 @@ from html.parser import HTMLParser
 from urllib.parse import urlsplit, parse_qs
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-APP_STORE = "https://apps.apple.com/app/apple-store/id1626937020?pt=958359&ct={}&mt=8"
+APP_STORE = "https://apps.apple.com/app/apple-store/id1626937020?ppid=76589797-e154-4662-abbd-d4c5c7a38b05&pt=958359&ct=website&mt=8"
 # Each guide's single primary CTA and the tag it must carry.
 CTA = {
     "guides/index.html": APP_STORE.format("guide-index"),
@@ -19,14 +19,14 @@ CTA = {
     "guides/readwise-alternatives/index.html": APP_STORE.format("guide-readwise"),
     "guides/save-quotes-from-kindle/index.html": APP_STORE.format("guide-kindle"),
     "guides/save-quotes-from-books/index.html": APP_STORE.format("guide-books"),
-    "guides/quote-widget-iphone/index.html": APP_STORE.format("guide-widget"),
+    "guides/quote-widget-iphone/index.html": "https://apps.apple.com/app/apple-store/id1626937020?ppid=3bfae5bb-ea40-4c58-b90f-4d3b7b003fa4&pt=958359&ct=website&mt=8",
     "guides/save-quotes-from-instagram/index.html": APP_STORE.format("guide-instagram"),
     "guides/save-quotes-from-x/index.html": APP_STORE.format("guide-x"),
     "guides/mcp/claude/index.html": "https://mcp.quotify.to/?ref=guide-claude#apps",
     "guides/mcp/chatgpt/index.html": "https://mcp.quotify.to/?ref=guide-chatgpt#apps",
     "guides/mcp/cursor/index.html": "https://mcp.quotify.to/?ref=guide-cursor#apps",
 }
-CAMPAIGN = re.compile(r"^[a-z0-9-]{1,40}$")
+CAMPAIGN = re.compile(r"^[a-z0-9-]{1,30}$")
 BANNED = re.compile(r"Premium|\$\d|Quotify 2\.0|waitlist|Unsplash", re.I)
 
 

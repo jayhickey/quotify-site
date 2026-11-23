@@ -38,8 +38,6 @@
   });
   const banner = document.querySelector('meta[name="apple-itunes-app"]');
   if (banner) {
-    banner.content = banner.content
-      .replace(/ct=website/g, 'ct=' + (channel || 'website'))
-      .replace(/app-argument=(.*)$/, (_, href) => 'app-argument=' + rewrite(href));
+    banner.content = banner.content.replace(/ct=website/g, 'ct=' + (channel || 'website'));
   }
 })();

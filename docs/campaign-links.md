@@ -15,4 +15,4 @@ Provider and approved product pages verified in App Store Connect on 2026-11-20.
 
 The website uses utm_source, then ref, then an AI referrer, then the saved session channel. Unknown sources are ignored. Explicit recognized sources replace the session channel. Storage failures leave attribution working on the current page. Plain visits use website and the page-specific product page.
 
-Existing Smart App Banners include affiliate-data and an attributed app-argument. Apple’s current documentation describes app-argument as installed-app context, and does not document affiliate-data or guarantee dynamic banner attribution; verify banner acquisition on a physical iOS device. See https://developer.apple.com/documentation/webkit/promoting-apps-with-smart-app-banners.
+Smart App Banners include app-id and affiliate-data. The campaign script updates ct in affiliate-data. Verify banner acquisition on a physical iOS device. See https://developer.apple.com/documentation/webkit/promoting-apps-with-smart-app-banners.
